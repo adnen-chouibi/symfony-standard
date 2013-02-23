@@ -54,6 +54,7 @@ List of additional bundles and libs:
     * LiipDoctrineCacheBundle
     * LiipFunctionalTestBundle
     * LiipMonitorBundle
+    * LiipCodeBundle
 
     * JMSAopBundle (and cg-library)
     * JMSSerializerBundle

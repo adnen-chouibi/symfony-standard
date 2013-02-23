@@ -53,6 +53,7 @@ class AppKernel extends Kernel
             if ('test' === $this->getEnvironment()) {
                 $bundles[] = new Liip\FunctionalTestBundle\LiipFunctionalTestBundle();
             } else {
+                $bundles[] = new Liip\CodeBundle\LiipCodeBundle();
                 $bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this);
             }
         }

@@ -32,6 +32,7 @@
         "liip/cache-control-bundle": "dev-master",
         "liip/container-wrapper-bundle": "dev-master",
         "liip/functional-test-bundle": "dev-master",
+        "liip/code-bundle": "dev-master",
         "nelmio/api-doc-bundle": "dev-master",
         "incenteev/composer-parameter-handler": "1.0.*",
         "friendsofsymfony/rest-bundle": "dev-master",
