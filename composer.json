@@ -39,7 +39,8 @@
         "friendsofsymfony/facebook-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "dev-master",
         "fsc/hateoas-bundle": "dev-master",
-        "sensiolabs/security-checker": "v1.1"
+        "sensiolabs/security-checker": "v1.1",
+        "wjzijderveld/check-bundles": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -47,14 +48,16 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Liip\\MonitorBundle\\Composer\\ScriptHandler::checkHealth"
+            "Liip\\MonitorBundle\\Composer\\ScriptHandler::checkHealth",
+            "WillemJan\\CheckBundles\\Composer\\CheckBundles::postPackageUpdate"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Liip\\MonitorBundle\\Composer\\ScriptHandler::checkHealth"
+            "Liip\\MonitorBundle\\Composer\\ScriptHandler::checkHealth",
+            "WillemJan\\CheckBundles\\Composer\\CheckBundles::postPackageUpdate"
         ]
     },
     "config": {
