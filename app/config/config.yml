@@ -77,6 +77,7 @@ fos_facebook:
     secret: a7d05283b77147f065098358ddb5674c
     cookie: true
     permissions: [email, user_birthday, user_location]
+    permissions: [email, user_birthday, user_location]
 
 fos_rest:
     view:
