@@ -2057,18 +2057,29 @@
             "target-dir": "Liip/HelloBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/liip/LiipHelloBundle",
-                "reference": "b261acb606183ba3f0b1228beba48ea5356e3f72"
+                "url": "https://github.com/liip/LiipHelloBundle.git",
+                "reference": "970c97e3123df826e02e9bf924f0e47699d1be74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipHelloBundle/zipball/b261acb606183ba3f0b1228beba48ea5356e3f72",
-                "reference": "b261acb606183ba3f0b1228beba48ea5356e3f72",
+                "url": "https://api.github.com/repos/liip/LiipHelloBundle/zipball/970c97e3123df826e02e9bf924f0e47699d1be74",
+                "reference": "970c97e3123df826e02e9bf924f0e47699d1be74",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2",
-                "symfony/framework-bundle": ">=2.2,<=2.3-dev"
+                "doctrine/phpcr-bundle": "1.0.*",
+                "doctrine/phpcr-odm": "1.0.*",
+                "friendsofsymfony/facebook-bundle": "dev-master",
+                "friendsofsymfony/rest-bundle": "dev-master",
+                "friendsofsymfony/user-bundle": "dev-master",
+                "fsc/hateoas-bundle": "dev-master",
+                "liip/container-wrapper-bundle": "dev-master",
+                "liip/hyphenator-bundle": "dev-master",
+                "liip/imagine-bundle": "dev-master",
+                "liip/theme-bundle": "dev-master",
+                "nelmio/api-doc-bundle": "dev-master",
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": ">=2.2,<=2.4-dev"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2094,7 +2105,7 @@
             "keywords": [
                 "example"
             ],
-            "time": "2013-02-06 19:34:13"
+            "time": "2013-03-17 16:55:28"
         },
         {
             "name": "liip/hyphenator-bundle",
