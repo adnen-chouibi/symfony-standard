@@ -1,5 +1,5 @@
 {
-    "hash": "de8c4158b3230a318e4c7ae486eadb56",
+    "hash": "46c89993b383e5387aa06500a5fdf031",
     "packages": [
         {
             "name": "Org_Heigl/Hyphenator",
@@ -100,6 +100,72 @@
                 "markdown"
             ],
             "time": "2012-07-15 16:31:27"
+        },
+        {
+            "name": "doctrine/annotations",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/annotations.git",
+                "reference": "v1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/v1.1",
+                "reference": "v1.1",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/lexer": "1.*",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "doctrine/cache": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common\\Annotations\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com",
+                    "homepage": "http://www.jwage.com/"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com",
+                    "homepage": "http://www.instaclick.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "http://jmsyst.com",
+                    "role": "Developer of wrapped JMSSerializerBundle"
+                }
+            ],
+            "description": "Docblock Annotations Parser",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "annotations",
+                "docblock",
+                "parser"
+            ],
+            "time": "2013-03-17 14:03:10"
         },
         {
             "name": "doctrine/common",
@@ -414,6 +480,63 @@
                 "persistence"
             ],
             "time": "2013-02-12 11:13:27"
+        },
+        {
+            "name": "doctrine/lexer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/lexer.git",
+                "reference": "bc0e1f0cc285127a38c6c8ea88bc5dba2fd53e94"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/bc0e1f0cc285127a38c6c8ea88bc5dba2fd53e94",
+                "reference": "bc0e1f0cc285127a38c6c8ea88bc5dba2fd53e94",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common\\Lexer\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com",
+                    "homepage": "http://www.instaclick.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "https://github.com/schmittjoh",
+                    "role": "Developer of wrapped JMSSerializerBundle"
+                }
+            ],
+            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "lexer",
+                "parser"
+            ],
+            "time": "2013-03-07 12:15:25"
         },
         {
             "name": "doctrine/orm",
@@ -912,65 +1035,6 @@
                 "User management"
             ],
             "time": "2013-03-15 10:50:03"
-        },
-        {
-            "name": "fsc/hateoas-bundle",
-            "version": "dev-master",
-            "target-dir": "FSC/HateoasBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TheFootballSocialClub/FSCHateoasBundle.git",
-                "reference": "2f0c27250ac783753ddea68a98cf9fa7dc69f8ee"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TheFootballSocialClub/FSCHateoasBundle/zipball/2f0c27250ac783753ddea68a98cf9fa7dc69f8ee",
-                "reference": "2f0c27250ac783753ddea68a98cf9fa7dc69f8ee",
-                "shasum": ""
-            },
-            "require": {
-                "jms/metadata": ">=1.1.0,<1.3-dev",
-                "jms/serializer": "0.11.*",
-                "jms/serializer-bundle": "*",
-                "php": ">=5.3.0",
-                "symfony/framework-bundle": ">=2.1,<2.3-dev",
-                "symfony/property-access": "2.2.*"
-            },
-            "require-dev": {
-                "pagerfanta/pagerfanta": "*",
-                "symfony/browser-kit": "*",
-                "symfony/class-loader": "*",
-                "symfony/form": "*",
-                "symfony/validator": "*",
-                "symfony/yaml": "*"
-            },
-            "suggest": {
-                "pagerfanta/pagerfanta": "*",
-                "symfony/form": ">=2.1,<2.3-dev",
-                "symfony/validator": ">=2.1,<2.3-dev"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "FSC\\HateoasBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adrien Brault",
-                    "email": "adrien.brault@gmail.com"
-                }
-            ],
-            "time": "2013-03-01 10:10:42"
         },
         {
             "name": "imagine/Imagine",
@@ -1473,7 +1537,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -1593,20 +1657,20 @@
         },
         {
             "name": "jms/serializer",
-            "version": "0.11.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git://github.com/schmittjoh/serializer",
-                "reference": "0.11.0"
+                "url": "https://github.com/schmittjoh/serializer.git",
+                "reference": "ef8f4ec9cb33d16006c405700ebce00f757d1bf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/0.11.0",
-                "reference": "0.11.0",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/ef8f4ec9cb33d16006c405700ebce00f757d1bf9",
+                "reference": "ef8f4ec9cb33d16006c405700ebce00f757d1bf9",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "2.*",
+                "doctrine/annotations": "1.*",
                 "jms/metadata": ">=1.1.0,<1.3-dev",
                 "jms/parser-lib": "1.*",
                 "php": ">=5.3.2",
@@ -1627,7 +1691,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "0.12-dev"
                 }
             },
             "autoload": {
@@ -1656,7 +1720,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2013-01-29 10:56:07"
+            "time": "2013-03-06 19:15:02"
         },
         {
             "name": "jms/serializer-bundle",
@@ -2058,12 +2122,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipHelloBundle.git",
-                "reference": "970c97e3123df826e02e9bf924f0e47699d1be74"
+                "reference": "c521f5d041f1abfb832d26a95b092c47f6f998a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipHelloBundle/zipball/970c97e3123df826e02e9bf924f0e47699d1be74",
-                "reference": "970c97e3123df826e02e9bf924f0e47699d1be74",
+                "url": "https://api.github.com/repos/liip/LiipHelloBundle/zipball/c521f5d041f1abfb832d26a95b092c47f6f998a7",
+                "reference": "c521f5d041f1abfb832d26a95b092c47f6f998a7",
                 "shasum": ""
             },
             "require": {
@@ -2072,7 +2136,7 @@
                 "friendsofsymfony/facebook-bundle": "dev-master",
                 "friendsofsymfony/rest-bundle": "dev-master",
                 "friendsofsymfony/user-bundle": "dev-master",
-                "fsc/hateoas-bundle": "dev-master",
+                "jms/serializer-bundle": "0.12.*",
                 "liip/container-wrapper-bundle": "dev-master",
                 "liip/hyphenator-bundle": "dev-master",
                 "liip/imagine-bundle": "dev-master",
@@ -2105,7 +2169,7 @@
             "keywords": [
                 "example"
             ],
-            "time": "2013-03-17 16:55:28"
+            "time": "2013-03-17 17:15:38"
         },
         {
             "name": "liip/hyphenator-bundle",
@@ -3428,7 +3492,6 @@
         "friendsofsymfony/rest-bundle": 20,
         "friendsofsymfony/facebook-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
-        "fsc/hateoas-bundle": 20,
         "wjzijderveld/check-bundles": 20
     },
     "platform": {
