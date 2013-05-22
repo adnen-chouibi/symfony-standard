@@ -35,7 +35,7 @@ app/console doctrine:schema:create
 And the PHPCR Doctrine DBAL schema:
 ```
 app/console doctrine:phpcr:init:dbal
-app/console doctrine:phpcr:register-system-node-types
+app/console doctrine:phpcr:repository:init
 ```
 
 List of additional bundles and libs:

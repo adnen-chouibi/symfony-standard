@@ -42,11 +42,29 @@ abstract class WebTestCase extends BaseWebTestCase
         $session = $this->getContainer()->get('doctrine_phpcr')->getConnection();
         if ($session instanceof Session && $session->getTransport() instanceof DoctrineDBALClient) {
             $connection = $this->getContainer()->get('doctrine')->getConnection();
-            $schema =  new RepositorySchema($connection);
-            $schema->reset();
+            $schema = RepositorySchema::create();
+            foreach ($schema->toSql($connection->getDatabasePlatform()) as $sql) {
+                $connection->exec($sql);
+            }
 
-            $command = new RegisterSystemNodeTypesCommand();
-            $command->registerSystemNodeTypes($session);
+            $ntm = $session->getWorkspace()->getNodeTypeManager();
+            $cnd = <<<CND
+// register phpcr_locale namespace
+<phpcr_locale='http://www.doctrine-project.org/projects/phpcr_odm/phpcr_locale'>
+// register phpcr namespace
+<phpcr='http://www.doctrine-project.org/projects/phpcr_odm'>
+[phpcr:managed]
+mixin
+- phpcr:class (STRING)
+- phpcr:classparents (STRING) multiple
+CND
+            ;
+            $ntm->registerNodeTypesCnd($cnd, true);
+
+            foreach ($this->getContainer()->getParameter('doctrine_phpcr.initialize.initializers') as $id) {
+                $initializer = $this->getContainer()->get($id);
+                $initializer->init($session);
+            }
         }
     }
 
