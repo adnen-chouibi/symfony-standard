@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "46c89993b383e5387aa06500a5fdf031",
+    "hash": "c09d6680a2da89bf51f31a81ec377499",
     "packages": [
         {
             "name": "dflydev/markdown",
@@ -921,6 +921,49 @@
                 "phpcr"
             ],
             "time": "2013-05-15 12:53:34"
+        },
+        {
+            "name": "egulias/listeners-debug-command-bundle",
+            "version": "dev-master",
+            "target-dir": "Egulias/ListenersDebugCommandBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/ListenersDebugCommandBundle.git",
+                "reference": "1.4.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egulias/ListenersDebugCommandBundle/zipball/1.4.1",
+                "reference": "1.4.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/symfony": ">=2.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Egulias\\ListenersDebugCommandBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis",
+                    "homepage": "http://egulias.com"
+                }
+            ],
+            "description": "Symfony 2 console command to debug listeners",
+            "homepage": "https://github.com/egulias/ListenersDebugCommandBundle.git",
+            "keywords": [
+                "events",
+                "listener"
+            ],
+            "time": "2013-04-17 20:34:07"
         },
         {
             "name": "facebook/php-sdk",
@@ -3740,7 +3783,8 @@
         "friendsofsymfony/rest-bundle": 20,
         "friendsofsymfony/facebook-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
-        "wjzijderveld/check-bundles": 20
+        "wjzijderveld/check-bundles": 20,
+        "egulias/listeners-debug-command-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"
