@@ -20,9 +20,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new JMS\AopBundle\JMSAopBundle(),
-            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
-            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+
             new JMS\SerializerBundle\JMSSerializerBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
@@ -53,7 +51,7 @@ class AppKernel extends Kernel
                 $bundles[] = new Liip\FunctionalTestBundle\LiipFunctionalTestBundle();
             } else {
                 $bundles[] = new Liip\CodeBundle\LiipCodeBundle();
-                $bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this);
+//                $bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this);
             }
         }
 
@@ -68,7 +66,7 @@ class AppKernel extends Kernel
     protected function getContainerBaseClass()
     {
         if ($this->isDebug()) {
-            return '\JMS\DebuggingBundle\DependencyInjection\TraceableContainer';
+//            return '\JMS\DebuggingBundle\DependencyInjection\TraceableContainer';
         }
 
         return parent::getContainerBaseClass();

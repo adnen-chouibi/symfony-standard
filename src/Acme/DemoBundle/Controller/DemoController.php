@@ -39,8 +39,8 @@ class DemoController extends Controller
         $form = $this->get('form.factory')->create(new ContactType());
 
         $request = $this->get('request');
-        if ('POST' == $request->getMethod()) {
-            $form->bindRequest($request);
+        if ($request->isMethod('POST')) {
+            $form->submit($request);
             if ($form->isValid()) {
                 $mailer = $this->get('mailer');
                 // .. setup a message and send it
