@@ -24,7 +24,7 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "liip/hello-bundle": "dev-master",
-        "liip/monitor-bundle": "0.5.*",
+        "liip/monitor-bundle": "1.0.*",
         "liip/cache-control-bundle": "1.1.*",
         "liip/functional-test-bundle": "dev-master",
         "liip/code-bundle": "0.5.*",
@@ -58,6 +58,7 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
+        "checkbundles-ignore": ["JMS\\AopBundle\\JMSAopBundle", "JMS\\DiExtraBundle\\JMSDiExtraBundle", "Liip\\FunctionalTestBundle\\LiipFunctionalTestBundle"],
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
         "branch-alias": {
