@@ -2248,12 +2248,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipHelloBundle.git",
-                "reference": "8ccff6829f077ddf2471e47a0070684986a8ca6e"
+                "reference": "7e7e0a0703bcdd2230f5c4e0b9c6a2cff2cab567"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipHelloBundle/zipball/8ccff6829f077ddf2471e47a0070684986a8ca6e",
-                "reference": "8ccff6829f077ddf2471e47a0070684986a8ca6e",
+                "url": "https://api.github.com/repos/liip/LiipHelloBundle/zipball/7e7e0a0703bcdd2230f5c4e0b9c6a2cff2cab567",
+                "reference": "7e7e0a0703bcdd2230f5c4e0b9c6a2cff2cab567",
                 "shasum": ""
             },
             "require": {
@@ -2269,7 +2269,7 @@
                 "liip/imagine-bundle": "0.10.*",
                 "liip/theme-bundle": "dev-master",
                 "liip/url-auto-converter-bundle": "1.0.*",
-                "nelmio/api-doc-bundle": "2.2.*",
+                "nelmio/api-doc-bundle": "2.3.*",
                 "php": ">=5.3.3",
                 "symfony/framework-bundle": "~2.2"
             },
@@ -2297,7 +2297,7 @@
             "keywords": [
                 "example"
             ],
-            "time": "2013-06-19 13:31:38"
+            "time": "2013-07-10 11:40:20"
         },
         {
             "name": "liip/hyphenator-bundle",
