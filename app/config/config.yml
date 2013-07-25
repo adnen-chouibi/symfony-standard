@@ -201,8 +201,7 @@ liip_doctrine_cache:
 
 liip_monitor:
     checks:
-        deps_entries: true
-        php_extensions: [pdo, gd, sds]
+        php_extensions: [pdo, gd]
         security_advisory: ~
         custom_error_pages:
             error_codes: [500, 404]
