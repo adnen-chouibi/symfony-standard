@@ -132,7 +132,7 @@ doctrine_phpcr:
     session:
         backend:
             type: doctrinedbal
-            connection: database_connection
+            connection: default
 #            type: jackrabbit
 #            url: http://localhost:8080/server/
 #            disable_stream_wrapper: true
@@ -201,5 +201,8 @@ liip_doctrine_cache:
 
 liip_monitor:
     checks:
-        php_extensions: [pdo, gd]
+        deps_entries: true
+        php_extensions: [pdo, gd, sds]
         security_advisory: ~
+        custom_error_pages:
+            error_codes: [500, 404]
