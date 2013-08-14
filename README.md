@@ -123,6 +123,9 @@ http://symfony-standard.lo/app_dev.php/liip/exception.html
 Using the FOSRestBundle to handle a failed validation
 http://symfony-standard.lo/app_dev.php/liip/validation_failure.json
 
+Using the FOSRestBundle to handle a jsonp request
+http://symfony-standard.lo/app_dev.php/liip/jsonp?callback=lala
+
 Using the LiipHyphenatorBundle
 http://symfony-standard.lo/app_dev.php/liip/hyphenator
 

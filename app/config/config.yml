@@ -87,6 +87,7 @@ fos_rest:
           html: true
 #          xml: true
         formats:
+            jsonp: true
             json: true
             xml: true
             rss: false
@@ -97,6 +98,7 @@ fos_rest:
             rss: 'application/rss+xml'
             jpg: 'image/jpeg'
             png: 'image/png'
+        jsonp_handler: ~
     body_listener: true
     param_fetcher_listener: force
     allowed_methods_listener: true
