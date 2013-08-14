@@ -24,3 +24,7 @@ NelmioApiDocBundle:
 theme:
     resource: "@LiipThemeBundle/Resources/config/routing.xml"
     prefix:   /liip/theme
+
+monitor:
+    resource: "@LiipMonitorBundle/Resources/config/routing.yml"
+    prefix:   /liip
