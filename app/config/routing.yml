@@ -1,2 +1,27 @@
 dic_exercise:
     resource: "@SymfonyWorkshopDependencyInjectionBundle/Resources/config/routing.yml"
+
+blog_archive:
+    path:      /blog/{date}
+    defaults:  { _controller: AcmeDemoBundle:Blog:byDate }
+    methods:   [GET, PUT] # HEAD implicit
+    schemes:   https
+    requirements:
+        date:  \d{4}-\d{1,2}-\d{1,2}
+
+blog:
+    path:      /blog/{page}
+    defaults:  { _controller: AcmeDemoBundle:Blog:index, page: 1 }
+
+blog_categories:
+    path:      /blog/{category1}/{category2}/{category3}
+    defaults:  { _controller: AcmeDemoBundle:Blog:byCategories, category2: "", category3: "" }
+
+blog_article:
+    path:      /blog/{slug}.{_format}
+    defaults:  { _controller: AcmeDemoBundle:Blog:article, _format: html }
+
+user_profile:
+    path:     /
+    host:     "{user}.%domain%"
+    defaults: { _controller: AcmeDemoBundle:User:profile }
