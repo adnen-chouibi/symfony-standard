@@ -1,0 +1,6 @@
+services:
+    symfony_workshop.filesystem_routing.routing_loader:
+        class: SymfonyWorkshop\FilesystemRoutingBundle\Routing\FilesystemLoader
+        arguments: [@file_locator]
+        tags:
+            - { name: routing.loader }

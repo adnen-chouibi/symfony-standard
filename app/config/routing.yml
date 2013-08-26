@@ -25,3 +25,7 @@ user_profile:
     path:     /
     host:     "{user}.%domain%"
     defaults: { _controller: AcmeDemoBundle:User:profile }
+
+_filesystem:
+    resource: "@SymfonyWorkshopFilesystemRoutingBundle/Controller/"
+    type:     filesystem
