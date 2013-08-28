@@ -16,5 +16,9 @@
         </service>
 
         <service id="acme.demo.some_service" class="Acme\DemoBundle\Services\SomeService" />
+
+        <service id="acme.demo.request_head_listener" class="Acme\DemoBundle\EventListener\RequestHeadListener">
+            <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="-129" />
+        </service>
     </services>
 </container>
