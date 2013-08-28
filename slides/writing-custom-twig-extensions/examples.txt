@@ -1,0 +1,38 @@
+- How twig works
+  - Go through lexer, parser, compiler by example
+    (http://twig.sensiolabs.org/doc/internals.html)
+
+- CoreExtension
+
+Tag (TokenParser) and Filter:
+- https://github.com/fabpot/Twig-extensions/tree/master/lib/Twig/Extensions
+
+Filter:
+- https://github.com/liip/LiipUrlAutoConverterBundle
+- https://github.com/liip/LiipHyphenatorBundle
+
+Function:
+- https://github.com/symfony-cmf/CoreBundle/blob/master/Twig/Extension/CmfExtension.php
+- https://github.com/fabpot/Twig/issues/408 as function
+
+Test:
+-
+
+Explain options:
+array('needs_environment' => true, 'needs_context' => true, 'pre_escape' => 'html', 'is_safe' => array('html'))
+
+
+Automatic escaping is not applied if the last filter in the chain is marked safe for the current context (e.g. html or js). escaper and escaper('html') are marked safe for html, escaper('js') is marked safe for javascript, raw is marked safe for everything.
+
+
+{% autoescape 'js' %}
+    {{ var|escape('html') }} {# will be escaped for html and javascript #}
+    {{ var }} {# will be escaped for javascript #}
+    {{ var|escape('js') }} {# won't be double-escaped #}
+{% endautoescape %}
+
+
+Functions vs Filter:
+- {% knp_menu('main' } %} vs {{ 'main'|knp_menu }}
+- Filter transforms a already meaningful value to a different representation or adapts it
+- Function returns a value that you probably do not need to chain with other filters, like a full HTML menu or an object
