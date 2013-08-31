@@ -1,0 +1,16 @@
+services:
+    my_mailer:
+        class: SymfonyWorkshop\DependencyInjectionBundle\Mailer\MyMailer
+        lazy:  true
+
+    mailing_controller:
+        abstract:  true
+        arguments: ["@my_mailer", "@logger"]
+
+    newsletter_controller:
+        class:  SymfonyWorkshop\DependencyInjectionBundle\Controller\NewsletterController
+        parent: mailing_controller
+
+    greeting_card_controller:
+        class:  SymfonyWorkshop\DependencyInjectionBundle\Controller\GreetingCardController
+        parent: mailing_controller

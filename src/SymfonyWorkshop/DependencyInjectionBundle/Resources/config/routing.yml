@@ -1,8 +1,11 @@
 dic_newsletter_lazy:
     path:     /newsletter/lazy
+    defaults: { _controller: "newsletter_controller:isLazyAction" }
 
 dic_newsletter_send:
     path:     /newsletter/send/{message}
+    defaults: { _controller: "newsletter_controller:sendAction" }
 
 dic_greeting_card_send:
     path:     /greetingcard/send/{recipient}/{message}
+    defaults: { _controller: "greeting_card_controller:sendAction" }
