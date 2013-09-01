@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- To render these slides you need Slippy https://github.com/Seldaek/slippy -->
+
+        <title>Writing Custom Twig Extensions</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <meta name="author" content="Tobias Schultze" />
+        <meta name="date" content="2013-09-06" />
+        <meta name="venue" content="Bol, Croatia" />
+
+        <!-- Slippy core file and dependencies -->
+        <script type="text/javascript" src="slippy/src/jquery.min.js"></script>
+        <script type="text/javascript" src="slippy/src/jquery.history.js"></script>
+        <script type="text/javascript" src="slippy/src/slippy.js"></script>
+        <!-- Slippy structural styles -->
+        <link type="text/css" rel="stylesheet" href="slippy/src/slippy.css"/>
+        <!-- Slippy theme -->
+        <link type="text/css" rel="stylesheet" href="slippy/src/slippy-pure.css"/>
+        <!-- Syntax highlighting core file  -->
+        <script type="text/javascript" src="slippy/src/highlighter/shCore.js"></script>
+        <!-- Syntax highlighting brushes, remove those you don't need -->
+        <script type="text/javascript" src="slippy/src/highlighter/shBrushPhp.js"></script>
+        <script type="text/javascript" src="slippy/src/highlighter/shBrushJScript.js"></script>
+        <script type="text/javascript" src="slippy/src/highlighter/shBrushXml.js"></script>
+        <!-- Syntax highlighting styles-->
+        <link type="text/css" rel="stylesheet" href="slippy/src/highlighter/shCore.css"/>
+        <link type="text/css" rel="stylesheet" href="slippy/src/highlighter/shThemeEclipse.css"/>
+
+        <style type="text/css">
+            body > * {
+                font-size: 1.2em;
+            }
+
+            body {
+                background: #fff;
+            }
+
+            div.syntaxhighlighter {
+                background: #aaa !important;
+            }
+
+            span.file {
+                font-size: 0.8em;
+                color: #f00;
+                float: right;
+                margin: -.2em .5em 0 0;
+            }
+
+            .smallcode {
+                font-size: 0.8em;
+            }
+
+            strong {
+                color: #662222;
+            }
+
+            li {
+                line-height: 1.2em;
+            }
+            .footer, h1 {
+                background: #eeeeee;
+                border: solid #cccccc 1px;
+                border-radius: 5px;
+                padding: 8px;
+            }
+            .section h1 {
+                background: #fff;
+                border: none;
+                font-size: 2em;
+            }
+            .footer {
+                background: #fff;
+                margin: 10px;
+                margin-top: 0;
+                width: 97%;
+            }
+        </style>
+        <!-- Slippy init code -->
+        <script type="text/javascript">
+            $(function() {
+                $(".slide").slippy({
+                });
+                SyntaxHighlighter.all();
+            });
+        </script>
+    </head>
+
+    <body>
+
+        <div class="footer">
+            <span class="left"><a href="http://ezsummercamp.com/">eZ Publish Summer Camp 2013</a>: <a href="http://ezsummercamp.com/program/writing_custom_twig_extensions">Writing Custom Twig Extensions</a></span>
+            <span class="right"><a href="https://github.com/Tobion">Tobias Schultze</a></span>
+            <hr class="defloat" />
+        </div>
+
+        <div class="slide section">
+            <h1>Writing Custom Twig Extensions</h1>
+            <h2>Topics</h2>
+            <ul>
+                <li>Twigs architecture</li>
+                <li>From template to PHP code: lexer, parser, compiler</li>
+                <li>Twigs magic: Twig_Template::getAttribute()</li>
+                <li>Core Extension</li>
+                <li>Extension options</li>
+                <li>Functions vs Filters</li>
+                <li>Exercise: Implement custom filter/function</li>
+                <li>Exercise: Implement custom test</li>
+                <li>Exercise: Implement custom tag</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Twigs architecture</h1>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>From template to PHP code: lexer, parser, compiler</h1>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Twigs magic: Twig_Template::getAttribute()</h1>
+            <ul>
+                <li>Have a look at <a href="https://github.com/fabpot/Twig/blob/master/lib/Twig/Template.php#L339" target="_new">Twig_Template::getAttribute()</a></li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Core Extension</h1>
+            <ul>
+                <li>Have a look at <a href="https://github.com/fabpot/Twig/blob/master/lib/Twig/Extension/Core.php" target="_new">Twig_Extension_Core </a></li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Extension options</h1>
+            <ol>
+                <li>needs_environment</li>
+                <li>needs_context</li>
+                <li>pre_escape</li>
+                <li>is_safe</li>
+                <li>is_safe_callback</li>
+            </ol>
+        </div>
+
+        <div class="slide">
+            <h1>Functions vs Filters</h1>
+            <ol>
+                <li><code>{% knp_menu('main' } %} vs {{ 'main'|knp_menu }}</code></li>
+                <li>Filter transforms a already meaningful value to a different representation or adapts it</li>
+                <li>Function returns a value that you probably do not need to chain with other filters, like a full HTML menu or an object</li>
+            </ol>
+        </div>
+
+        <div class="slide">
+            <h1>Exercise: Implement custom filter/function</h1>
+            <ul>
+                <li>Scenario: </li>
+                <li>Solution: </li>
+                <li>Implementation: </li>
+                <li>Documentation: <a href=""></a></li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Exercise: Implement custom test</h1>
+
+            <pre class="brush: js">
+
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Exercise: Implement custom tag</h1>
+
+            <pre class="brush: php">
+
+            </pre>
+        </div>
+
+    </body>
+</html>
