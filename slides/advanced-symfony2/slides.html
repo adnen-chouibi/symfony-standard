@@ -116,29 +116,30 @@
                 <li>Request processing</li>
                 <li>Events</li>
                 <li>Controller Resolver</li>
+                <li>Write an event listener exercise</li>
             </ul>
         </div>
 
         <div class="slide">
             <h1>Kernel overview</h1>
             <ul>
-                <li>Responsible to turn a Request instance into a Response instance</li>
+                <li>Convert a Request instance into a Response instance</li>
                 <li>Must implement the <a href="https://github.com/symfony/HttpKernel/blob/master/HttpKernelInterface.php#L24" target="_new">HttpKernelInterface</a></li>
                 <li>Custom logic is implemented in Bundles</li>
                 <li>Makes extensive use of events to allow for extensibility</li>
-                <li>Note: A Request might lead to any number of Sub-Requests</li>
+                <li><strong>Note:</strong> A Request might lead to any number of Sub-Requests</li>
             </ul>
         </div>
 
         <div class="slide">
             <h1>Kernel request processing</h1>
             <ol>
-                <li>Bootstrap all registered Bundles and the application configuration</li>
+                <li>Bootstrap all Bundles and the application configuration</li>
                 <li>Trigger kernel.request event, if a Response was set jump to 8</li>
-                <li>Use the ControllerResolver to determine the controller to execute</li>
+                <li>Determine the controller to execute</li>
                 <li>Trigger the kernel.controller event</li>
                 <li>Kernel calls the controller</li>
-                <li>Trigger kernel.view event, if the Controller does not return a Response</li>
+                <li>Trigger kernel.view event if no Response was returned</li>
                 <li>Trigger kernel.response event</li>
                 <li>Return the Response</li>
             </ol>
@@ -200,10 +201,14 @@
         <div class="slide">
             <h1>Exercise: Write a custom listener</h1>
             <ul>
-                <li>Scenario: We are using a reverse proxy in front of a website with a complex authentication and permission scheme</li>
-                <li>Solution: Rewrite all GET Requests to HEAD Requests, check for a 200 Response before serving content from the cache</li>
-                <li>Implementation: Write a listener for the kernel.request event. Ensure this listener has a lower priority than the firewall listener (priority 8). Return a 200 Response for any HEAD Request.</li>
-                <li>Documentation: <a href="http://symfony.com/doc/current/book/internals.html#events">Internals: Events</a></li>
+                <li><strong><strong>Scenario:</strong></strong> We are using a reverse proxy in front of a website with a complex authentication and permission scheme</li>
+                <li><strong>Solution:</strong> Rewrite all GET Requests to HEAD Requests, check for a 200 Response before serving content from the cache</li>
+                <li><strong>Implementation:</strong> Write a listener for the kernel.request event. Ensure this listener has a lower priority than the firewall listener (priority 8). Return a 200 Response for any HEAD Request.</li>
+                <li><strong>Documentation:</strong> <a href="http://symfony.com/doc/current/book/internals.html#events">Internals: Events</a></li>
+                <li><strong>Tip:</strong> Test using <a href="https://addons.mozilla.org/en-us/firefox/addon/poster/">Firefox Poster</a>,
+                    <a href="http://httpie.org/">httpie</a>
+                    or the following curl command: curl -I http://localhost/symfony-standard-ezsummercamp/web/app_dev.php
+                </li>
             </ul>
         </div>
 
@@ -213,7 +218,7 @@
                 <li>Determines the controller to load and what action method to call by reading Request::get('_controller')</li>
                 <li>Creates the controller instance if necessary</li>
                 <li>Additionally determines the parameters to pass to the controller action method</li>
-                <li>Note the kernel.controller event is triggered between determining and creating the controller and determining the action method parameters</li>
+                <li><strong>Note:</strong> kernel.controller event is triggered between determining and creating the controller and determining the action method parameters</li>
             </ul>
         </div>
 
@@ -223,7 +228,7 @@
                 <li>Required and optional placeholders</li>
                 <li>Route requirements</li>
                 <li>Host matching</li>
-                <li>Exercise: Write a custom route loader</li>
+                <li>Write a custom route loader exercise</li>
                 <li>Dumped routes for performance</li>
             </ul>
         </div>
@@ -259,8 +264,8 @@
 
             <ul>
                 <li><code>/blog/php</code> will match route "blog" (page=php) instead of "blog_categories".</li>
-                <li>Route order matters! Route matching happens the order you define them. So if you have routes that overlap, later routes might never match.</li>
-                <li>Solution: Careful crafting of route order, paths and requirements.</li>
+                <li>Route matching happens the order you define them. So if you have routes that overlap, later routes might never match.</li>
+                <li><strong>Note:</strong> Use "app/console router:match /foo/bar" to test</li>
             </ul>
         </div>
 
@@ -333,7 +338,7 @@
             <h1>Exercise: Write a custom route loader</h1>
 
             <ul>
-                <li>Scenario: We have controllers in a filesystem like
+                <li><strong><strong>Scenario:</strong></strong> We have controllers in a filesystem like
 <pre style="margin: 10px 0">
 ├── Controller
 │   ├── about
@@ -351,12 +356,12 @@
             <h1>Exercise: Write a custom route loader</h1>
 
             <ul>
-                <li>Solution: Create a route loader that loads routes based on the file system structure. The directories and files represent the URL path segments.
+                <li><strong>Solution:</strong> Create a route loader that loads routes based on the file system structure. The directories and files represent the URL path segments.
                 The file itself contains the Controller class and a "getAction" method that is executed for a GET request on the corresponding route. The routes
                 are static because placeholders do not exist.</li>
-                <li>Implemenation: The route loader accepts imports with "type: filesystem" and interates over all controller files in a directory and adds routes with the corresponding URL path for them.</li>
-                <li>Documentation: <a href="http://symfony.com/doc/current/cookbook/routing/custom_route_loader.html">Custom route loader</a></li>
-                <li>At the end you should be able to access <a href="http://advsf2.ezsc/app_dev.php/about/symfony">http://advsf2.ezsc/app_dev.php/about/symfony</a></li>
+                <li><strong>Implementation</strong>: The route loader accepts imports with "type: filesystem" and interates over all controller files in a directory and adds routes with the corresponding URL path for them.</li>
+                <li><strong>Documentation:</strong> <a href="http://symfony.com/doc/current/cookbook/routing/custom_route_loader.html">Custom route loader</a></li>
+                <li><strong>Test:</strong> <a href="http://advsf2.ezsc/app_dev.php/about/symfony">http://advsf2.ezsc/app_dev.php/about/symfony</a></li>
             </ul>
         </div>
 
@@ -397,13 +402,13 @@
         <div class="slide">
             <h1>Bundle bootstrapping</h1>
             <ul>
-                <li>Call the Bundles boot() method</li>
-                <li>Determine if the Container needs to be generated (missing or if in debug mode and any config file has changes)</li>
+                <li>Bundle boot() method is called</li>
+                <li>Determine if the Container needs to be generated:<br />cache is empty or when in debug mode and any existing config file has changes</li>
                 <ul>
                     <li>call prepend() method on any Bundle that has an Extension that implements PrependExtensionInterface</li>
                     <li>call load() method on any Bundle that has an Extension</li>
                 </ul>
-                <li>Serialize the Container to PHP</li>
+                <li>Serialize the Container to PHP and write the file to the cache</li>
             </ul>
         </div>
 
@@ -411,16 +416,43 @@
             <h1>Bundle extensions</h1>
             <ul>
                 <li>Optional way to add Bundle specific services to the Container</li>
-                <li>load() method should use the Configuration class to validate and merge the configuration</li>
+                <li>Define a Configuration class to validate and merge configuration</li>
+                <li>By using a Configuration class its possible to use: app/console config:dump-reference acme_demo</li>
                 <li>Create services and parameters in the Container by loading configuration files or by code</li>
-                <li>PrependExtensionInterface::prepend() method can change the defaults from other Bundles</li>
+                <li>PrependExtensionInterface::prepend() method can change the defaults in other Bundles</li>
             </ul>
         </div>
 
         <div class="slide">
-            <h1>Configuration</h1>
+            <h1>Extension class</h1>
 
-            <p>Handles applying default values, validation and merging of application configuration.</p>
+            <pre class="brush: php">
+            class AcmeDemoExtension extends Extension
+                implements PrependExtensionInterface {
+              public function prepend(ContainerBuilder $con)
+              {
+                $con->prependExtensionConfig('acme_foo', $config);
+              }
+
+              public function load(
+                array $configs, ContainerBuilder $con
+              ) {
+                $config = $this->processConfiguration(
+                  new Configuration(), $configs
+                );
+                $configDir = __DIR__.'/../Resources/config';
+                $locator = new FileLocator($configDir);
+                $loader = new XmlFileLoader($con, $locator);
+                $loader->load('services.xml');
+                $con->setParameter(
+                  'acme_demo.hello', $config['hello']
+                );
+            } }
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Configuration class</h1>
 
             <pre class="brush: php">
               public function getConfigTreeBuilder()
@@ -449,8 +481,8 @@
             <ul>
                 <li>Compiler passes make it possible to manipulate the DIC after all Bundle load() methods have been processed.</li>
                 <li>Main use case is to deal with interdependent services of different Bundles, often leveraging service tags</li>
-                <li>Compiler passes must be registered in the given Bundles boot() method</li>
-                <li>Composer pass has access to the ContainerBuilder instance</li>
+                <li>Compiler passes is registered in the Bundles boot() method</li>
+                <li>Compiler pass has access to the ContainerBuilder instance</li>
             </ul>
         </div>
 
@@ -502,10 +534,10 @@
                   $def = $con->getDefinition('acme_demo.service');
                   $ids =
                     $con->findTaggedServiceIds('acme_demo.tag');
-                  foreach ($ids as $id => $attributes) {
+                  foreach ($ids as $id => $attribs) {
                     $def->addMethodCall(
                       'addSomeDependency',
-                      array(new Reference($id), $attributes['alias'])
+                      array(new Reference($id), $attribs['alias'])
                     );
                   }
                 }
@@ -520,20 +552,23 @@
                 <li>Synchronized services</li>
                 <li>Synthetic services</li>
                 <li>Private/public services</li>
-                <li>Exercise: Configure controllers as services, service inheritance, lazy services</li>
+                <li>Configure controllers as services, service inheritance, lazy services exercise</li>
             </ul>
         </div>
 
         <div class="slide">
             <h1>Scopes</h1>
             <ul>
-                <li>Controls how long an instance of a service is used by the container.</li>
-                <li><strong>container</strong> (the default one): The same instance is used each time you request it from this container</li>
-                <li><strong>prototype</strong>: A new instance is created each time you request the service.</li>
-                <li><strong>request</strong>: A new instance is created for each subrequest and is unavailable outside the request (for instance in the CLI)</li>
+                <li>Controls in what circumstances a given service instance is returned multiple times
+                <ul>
+                    <li><strong>container</strong> (the default one): The same instance is used each time you request it from this container</li>
+                    <li><strong>prototype</strong>: A new instance is created each time you request the service.</li>
+                    <li><strong>request</strong>: A new instance is created for each subrequest and is unavailable outside a request (fe. on the CLI)</li>
+                </ul>
+                </li>
                 <li>A service cannot depend on services from a narrower scope.</li>
                 <li>Why do scopes exist and how to work with them?</li>
-                <!-- Example: Mailer service in container scope that depends on the request.
+                <!-- Example: Mailer service in container scope that depends on the Request.
                 When using the mailer service in a subrequest it would still have the old request instance of the master request.
                 Solutions:
                   - Injecting the full container (bad practice)
@@ -544,7 +579,9 @@
         <div class="slide">
             <h1>Synchronized services</h1>
             <ul>
-                <li>Whenever the request scope is entered or left, the service container will automatically call the setRequest() method with the current request instance (can be null!).</li>
+                <li>Whenever the Request scope is entered or left, the service container will automatically call
+                    the setRequest() method with the current request instance</li>
+                <li><strong>Note:</strong> The current request instance may be null</li>
             </ul>
 
             <pre class="brush: js">
@@ -567,15 +604,17 @@
         <div class="slide">
             <h1>Synthetic services</h1>
             <ul>
-                <li>Synthetic services are services that are injected into the container instead of being created by the container.</li>
-                <li>For example, the <a href="https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php#L54">ContainerAwareHttpKernel::handle()</a> method injects the request when entering the request scope. The class does not exist when there is no request, so it can't be included in the container configuration.</li>
+                <li>Synthetic services are services that are injected into the Container instead of being created by the Container.</li>
+                <li>For example, the <a href="https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php#L54">ContainerAwareHttpKernel::handle()</a>
+                    method injects the Request when entering the Request scope. The class does not exist when there is no Request,
+                    so it can't be included in the Container configuration.</li>
             </ul>
         </div>
 
         <div class="slide">
             <h1>Private/public services</h1>
             <ul>
-                <li>A service should be private when there is no need to access it directly from the container.</li>
+                <li>A service should be private when there is no need to access it directly from the Container.</li>
                 <li>This is common when a service is only defined because it could be used as an argument for another service.</li>
             </ul>
 
@@ -594,23 +633,34 @@
         <div class="slide">
             <h1>Exercise: Configure controllers as services, service inheritance, lazy services (1)</h1>
             <ul>
-                <li>Scenario: We are defining controllers as services and always have a similar set of dependencies (see DependencyInjectionBundle)</li>
-                <li>Solution: We define an abstract service which gets our standard dependencies injected</li>
-                <li>Implementation: Configure the generic service like you normally do and set "abstract" to "true", reuse the abstract service with the "parent" setting. Since the "MyMailer" service is heavy to instantiate, it should be defined as lazy (you need to install ocramius/proxy-manager).</li>
+                <li><strong><strong>Scenario:</strong></strong> We are defining controllers as services and always have a similar set of dependencies (see DependencyInjectionBundle)</li>
+                <li><strong>Solution:</strong> We define an abstract service which gets our standard dependencies injected</li>
+                <li><strong>Implementation:</strong> Configure the generic service like you normally do and set "abstract" to "true", reuse the abstract service with the "parent" setting. Since the "MyMailer" service is heavy to instantiate, it should be defined as lazy (you need to install ocramius/proxy-manager).</li>
             </ul>
         </div>
 
         <div class="slide">
             <h1>Exercise: Configure controllers as services, service inheritance, lazy services (2)</h1>
             <ul>
-                <li>Documentation:
+                <li><strong>Documentation:</strong>
                     <ul>
                         <li><a href="http://symfony.com/doc/current/cookbook/controller/service.html">How to define Controllers as Services</a></li>
                         <li><a href="http://symfony.com/doc/current/components/dependency_injection/parentservices.html">Managing Common Dependencies with Parent Services</a></li>
                         <li><a href="http://symfony.com/doc/current/components/dependency_injection/lazy_services.html">Lazy services</a></li>
                     </ul></li>
-                <li>At the end, <a href="http://advsf2.ezsc/app_dev.php/newsletter/send/message">http://advsf2.ezsc/app_dev.php/newsletter/send/message</a> should be accessible,</li>
-                <li><a href="http://advsf2.ezsc/app_dev.php/newsletter/lazy">http://advsf2.ezsc/app_dev.php/newsletter/lazy</a> should show that a lazy proxy is used.</li>
+                <li><strong>Solution:</strong>
+                    <ul>
+                        <li><a href="http://advsf2.ezsc/app_dev.php/newsletter/send/message">http://advsf2.ezsc/app_dev.php/newsletter/send/message</a> should be accessible</li>
+                        <li><a href="http://advsf2.ezsc/app_dev.php/newsletter/lazy">http://advsf2.ezsc/app_dev.php/newsletter/lazy</a> should show that a lazy proxy is used</li>
+                    </ul>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Data Collector</h1>
+            <ul>
+                <li>Overview</li>
+                <li>Write a data collector exercise</li>
             </ul>
         </div>
 
@@ -618,7 +668,7 @@
             <h1>Data Collector</h1>
             <ul>
                 <li>Allow collecting data into the profiler data base using a very simply Interface</li>
-                <li>Allow displaying collected data in the webdebug toolbar as well as inside the profiler UI</li>
+                <li>Allow displaying collected data in the web debug toolbar as well as inside the profiler UI</li>
             </ul>
         </div>
 
@@ -687,11 +737,12 @@
         <div class="slide">
             <h1>Exercise: Define a data collector that counts the calls to a custom service</h1>
             <ul>
-                <li>Scenario: We have a service we use across the entire application and we want to get a better overview how often it is called.</li>
-                <li>Solution: We add a data collector that is notified inside the service to collect the information</li>
-                <li>Implementation: Define a data collector service, define a dummy service that allows registering loggers that get notified when the service is used. Inject that service into the data collector so that it can register itself as a logger.</li>
-                <li>Documentation: <a href="http://symfony.com/doc/current/cookbook/profiler/data_collector.html">How to create a custom Data Collector</a></li>
-                <li>Extra credit: Define profiler templates to display which class called the service how often.</li>
+                <li><strong><strong>Scenario:</strong></strong> We have a service "acme_demo.some_service" we in <a href="http://advsf2.ezsc/app_dev.php/demo/hello/world">various places</a> application and we want to get a better overview how often it is called.</li>
+                <li><strong>Solution:</strong> We add a data collector that is notified inside the service to collect the information</li>
+                <li><strong>Implementation:</strong> Define a data collector service, define a dummy service that allows registering loggers that get notified when the service is used. Inject that service into the data collector so that it can register itself as a logger.</li>
+                <li><strong>Documentation:</strong> <a href="http://symfony.com/doc/current/cookbook/profiler/data_collector.html">How to create a custom Data Collector</a></li>
+                <li><strong>Extra credit:</strong> Define profiler templates to display the parameter passed to .</li>
+                <li><strong>Tip:</strong> Check DoctrineBundle:Collector:db for inspiration</li>
             </ul>
         </div>
 
