@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+       body {
+           font-size: 1.4em;
+           background-color: red;
+       }
+       .ok {
+           background-color: green;
+       }
+    </style>
+</head>
+<body {% if 'foobar' is matchingregex('#^fo{2}#') %}class="ok"{% endif %}>
+
+    <p>This page demonstrates the usage of the twig test "matchingregex".
+        The page should have a green background when implemented correctly.
+        If it's red, the test does not behave as intended.</p>
+
+    <p><code>'foobar' is matchingregex('#^fo{2}#')</code> should return true.</p>
+</body>
+</html>

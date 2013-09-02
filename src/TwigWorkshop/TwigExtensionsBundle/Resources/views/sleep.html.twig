@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+    {% sleep 1 %}
+    {% sleep (1 - 3)|abs %}
+
+    <p>This page demonstrates the usage of the twig tag "sleep".</p>
+
+    <p><code>{% verbatim %}{% sleep 1 %}{% endverbatim %}</code> should stop script execution for 1 second.</p>
+    <p>But expressions should be possible as well: <code>{% verbatim %}{% sleep (1 - 3)|abs %}{% endverbatim %}</code></p>
+</body>
+</html>

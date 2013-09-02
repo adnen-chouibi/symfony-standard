@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+       body {
+           font-size: 1.4em;
+           background-color: red;
+       }
+       .relegated, .withdrawn {
+           background-color: red !important;
+       }
+       .promoted {
+           background-color: yellow;
+       }
+       /* css escape of char ": http://mathiasbynens.be/notes/css-escapes */
+       .promoted.esca\22pe {
+           background-color: green;
+       }
+    </style>
+</head>
+<body {{ class_attribute({
+        'promoted': true,
+        'relegated': false,
+        'withdrawn': null,
+        'esca"pe': true
+    }) }}>
+
+    <p>This page demonstrates the usage of the twig function "class_attribute".
+        The page should have a green background when implemented correctly.
+        If it's yellow, escaping is not handled properly.
+        If it's red, the function does not behave as intended.</p>
+
+    <pre><code>
+class_attribute({
+    'promoted': true,
+    'relegated': false,
+    'withdrawn': null,
+    'esca"pe': true
+})</code></pre>
+
+    <p>should return <code>class="promoted esca&amp;quot;pe"</code></p>
+</body>
+</html>
