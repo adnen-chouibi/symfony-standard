@@ -1,0 +1,5 @@
+services:
+    twig_workshop.twig_extensions.workshop_extension:
+        class: TwigWorkshop\TwigExtensionsBundle\Twig\Extension\WorkshopExtension
+        tags:
+            - { name: twig.extension }
