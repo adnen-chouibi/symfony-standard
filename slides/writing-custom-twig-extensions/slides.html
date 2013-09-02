@@ -105,8 +105,8 @@
                 <li>From template to PHP code: lexer, parser, compiler</li>
                 <li>Twigs magic: Twig_Template::getAttribute()</li>
                 <li>Core Extension</li>
+                <li>Function vs Filter</li>
                 <li>Extension options</li>
-                <li>Functions vs Filters</li>
                 <li>Exercise: Implement custom filter/function</li>
                 <li>Exercise: Implement custom test</li>
                 <li>Exercise: Implement custom tag</li>
@@ -116,29 +116,78 @@
         <div class="slide">
             <h1>Twigs architecture</h1>
             <ul>
-                <li></li>
+                <li>Central object called environment of class Twig_Environment.</li>
+                <li>Environments are used to store the configuration and extensions, and are used to load templates from the file system or other locations.</li>
             </ul>
+
+            <pre class="brush: php">
+            require_once '/path/to/lib/Twig/Autoloader.php';
+            Twig_Autoloader::register();
+
+            $loader = new Twig_Loader_Filesystem('/path/to/templates');
+            $twig = new Twig_Environment($loader, array(
+                'cache' => '/path/to/compilation_cache',
+            ));
+
+            // load and render the template in one step
+            echo $twig->render('index.html', array('the' => 'variables', 'go' => 'here'));
+            </pre>
+
+            <!--
+            http://twig.sensiolabs.org/doc/api.html
+            <ul>
+                <li>Let's examine what happens behind the scenes.</li>
+            </ul>
+            -->
         </div>
 
         <div class="slide">
             <h1>From template to PHP code: lexer, parser, compiler</h1>
             <ul>
-                <li></li>
+                <li>Load the template: If the template is already compiled, load it and go to the evaluation step, otherwise:
+                    <ul>
+                        <li>First, the lexer tokenizes the template source code into small pieces for easier processing;</li>
+                        <li>Then, the parser converts the token stream into a meaningful tree of nodes (the Abstract Syntax Tree);</li>
+                        <li>Eventually, the compiler transforms the AST into PHP code;</li>
+                    </ul>
+                </li>
+                <li>Evaluate the template: It basically means calling the display() method of the compiled template and passing it the context.</li>
             </ul>
+            <!-- http://twig.sensiolabs.org/doc/internals.html -->
         </div>
 
         <div class="slide">
             <h1>Twigs magic: Twig_Template::getAttribute()</h1>
             <ul>
+                <li>With <code>foo.bar</code> Twig abstracts the underlying data structure to access an attribute <code>bar</code> on the variable <code>foo</code> for convenience.</li>
+                <li>But it has to check many different possibilites to retrieve the value. Which ones and in which order?</li>
+                <!-- http://twig.sensiolabs.org/doc/templates.html#variables -->
                 <li>Have a look at <a href="https://github.com/fabpot/Twig/blob/master/lib/Twig/Template.php#L339" target="_new">Twig_Template::getAttribute()</a></li>
+                <li>It's the bottleneck because every attribute access goes through this method.</li>
+                <li>Reason for the C extension which only implements this method in C code.</li>
             </ul>
         </div>
 
         <div class="slide">
             <h1>Core Extension</h1>
             <ul>
-                <li>Have a look at <a href="https://github.com/fabpot/Twig/blob/master/lib/Twig/Extension/Core.php" target="_new">Twig_Extension_Core </a></li>
+                <li>Everything in twig is loaded by an extension class (even the core functionality)</li>
+                <li><strong>filters</strong> for value transformation, e.g. <code>{{ 'WELCOME'|lower }}</code></li>
+                <li><strong>functions</strong> for content generation, e.g. <code>{{ random(5) }}</code></li>
+                <li><strong>tests</strong> for boolean decision, e.g. <code>{{ var is even }}</code></li>
+                <li><strong>operators</strong> for values transformation, e.g. <code>{{ 1 + 1 }}</code></li>
+                <li><strong>tags</strong> for DSL constructs, e.g. <code>{% if var %}{% endif %}</code></li>
+                <li>Have a look at <a href="https://github.com/fabpot/Twig/blob/master/lib/Twig/Extension/Core.php" target="_new">Twig_Extension_Core</a></li>
             </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Function vs Filter</h1>
+            <ol>
+                <li><code>{% knp_menu('main' } %}</code> vs<br /><code>{{ 'main'|knp_menu }}</code></li>
+                <li>Filters transform a already meaningful value to a different representation or adapt it.</li>
+                <li>Functions generate content that you probably do not need to chain with other filters, like a full HTML menu or an object.</li>
+            </ol>
         </div>
 
         <div class="slide">
@@ -152,14 +201,7 @@
             </ol>
         </div>
 
-        <div class="slide">
-            <h1>Functions vs Filters</h1>
-            <ol>
-                <li><code>{% knp_menu('main' } %} vs {{ 'main'|knp_menu }}</code></li>
-                <li>Filter transforms a already meaningful value to a different representation or adapts it</li>
-                <li>Function returns a value that you probably do not need to chain with other filters, like a full HTML menu or an object</li>
-            </ol>
-        </div>
+        <!-- http://symfony.com/doc/current/cookbook/templating/twig_extension.html -->
 
         <div class="slide">
             <h1>Exercise: Implement custom filter/function</h1>
@@ -173,6 +215,13 @@
 
         <div class="slide">
             <h1>Exercise: Implement custom test</h1>
+
+            <ul>
+                <li>Scenario: We want to check whether a string matches a regular expression.</li>
+                <li>Solution: </li>
+                <li>Implementation: matchingregex()</li>
+                <li>Documentation: <a href=""></a></li>
+            </ul>
 
             <pre class="brush: js">
 
