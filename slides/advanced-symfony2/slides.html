@@ -265,6 +265,7 @@
             <ul>
                 <li><code>/blog/php</code> will match route "blog" (page=php) instead of "blog_categories".</li>
                 <li>Route matching happens the order you define them. So if you have routes that overlap, later routes might never match.</li>
+                <!-- So you have to choose your route order, paths and requirements carefully. -->
                 <li><strong>Note:</strong> Use "app/console router:match /foo/bar" to test</li>
             </ul>
         </div>
@@ -283,11 +284,11 @@
             <p>What is the default requirement (regex) for <code>slug</code> and <code>_format</code>?</p>
 
             <ul>
-                <li>app/console router:debug blog_article</li>
-                <li>Path-Regex: <code>#^/blog/(?P&lt;slug&gt;[^/\.]++)(?:\.(?P&lt;_format&gt;[^/]++))?$#s</code></li>
-                <li>slug: <code>[^/\.]++</code></li>
-                <li>_format: <code>[^/]++</code></li>
-                <li><code>++</code> is a possessive quantifier</li>
+                <li class="incremental">app/console router:debug blog_article</li>
+                <li class="incremental">Path-Regex: <code>#^/blog/(?P&lt;slug&gt;[^/\.]++)(?:\.(?P&lt;_format&gt;[^/]++))?$#s</code></li>
+                <li class="incremental">slug: <code>[^/\.]++</code></li>
+                <li class="incremental">_format: <code>[^/]++</code></li>
+                <li class="incremental"><code>++</code> is a possessive quantifier</li>
             </ul>
         </div>
 
@@ -335,7 +336,7 @@
         </div>
 
         <div class="slide">
-            <h1>Exercise: Write a custom route loader</h1>
+            <h1>Exercise: Write a custom route loader (1)</h1>
 
             <ul>
                 <li><strong><strong>Scenario:</strong></strong> We have controllers in a filesystem like
@@ -353,7 +354,7 @@
         </div>
 
         <div class="slide">
-            <h1>Exercise: Write a custom route loader</h1>
+            <h1>Exercise: Write a custom route loader (2)</h1>
 
             <ul>
                 <li><strong>Solution:</strong> Create a route loader that loads routes based on the file system structure. The directories and files represent the URL path segments.
@@ -648,7 +649,7 @@
                         <li><a href="http://symfony.com/doc/current/components/dependency_injection/parentservices.html">Managing Common Dependencies with Parent Services</a></li>
                         <li><a href="http://symfony.com/doc/current/components/dependency_injection/lazy_services.html">Lazy services</a></li>
                     </ul></li>
-                <li><strong>Solution:</strong>
+                <li><strong>Test:</strong>
                     <ul>
                         <li><a href="http://advsf2.ezsc/app_dev.php/newsletter/send/message">http://advsf2.ezsc/app_dev.php/newsletter/send/message</a> should be accessible</li>
                         <li><a href="http://advsf2.ezsc/app_dev.php/newsletter/lazy">http://advsf2.ezsc/app_dev.php/newsletter/lazy</a> should show that a lazy proxy is used</li>
@@ -667,8 +668,8 @@
         <div class="slide">
             <h1>Data Collector</h1>
             <ul>
-                <li>Allow collecting data into the profiler data base using a very simply Interface</li>
-                <li>Allow displaying collected data in the web debug toolbar as well as inside the profiler UI</li>
+                <li>Allows collecting data into the profiler database using a very simple Interface</li>
+                <li>Allows displaying collected data in the web debug toolbar as well as inside the profiler UI</li>
             </ul>
         </div>
 
@@ -737,11 +738,11 @@
         <div class="slide">
             <h1>Exercise: Define a data collector that counts the calls to a custom service</h1>
             <ul>
-                <li><strong><strong>Scenario:</strong></strong> We have a service "acme_demo.some_service" we in <a href="http://advsf2.ezsc/app_dev.php/demo/hello/world">various places</a> application and we want to get a better overview how often it is called.</li>
-                <li><strong>Solution:</strong> We add a data collector that is notified inside the service to collect the information</li>
+                <li><strong><strong>Scenario:</strong></strong> We have a service "acme_demo.some_service" that we use in <a href="http://advsf2.ezsc/app_dev.php/demo/hello/world">various places</a> and we want to get a better overview how often it is called.</li>
+                <li><strong>Solution:</strong> We add a data collector that is notified inside the service to collect the information.</li>
                 <li><strong>Implementation:</strong> Define a data collector service, define a dummy service that allows registering loggers that get notified when the service is used. Inject that service into the data collector so that it can register itself as a logger.</li>
                 <li><strong>Documentation:</strong> <a href="http://symfony.com/doc/current/cookbook/profiler/data_collector.html">How to create a custom Data Collector</a></li>
-                <li><strong>Extra credit:</strong> Define profiler templates to display the parameter passed to .</li>
+                <li><strong>Extra credit:</strong> Define profiler templates to display the parameter passed to it.</li>
                 <li><strong>Tip:</strong> Check DoctrineBundle:Collector:db for inspiration</li>
             </ul>
         </div>
