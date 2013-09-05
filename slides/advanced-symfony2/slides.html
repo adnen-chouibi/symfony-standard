@@ -254,22 +254,27 @@
 
             <pre class="brush: js">
                 blog:
-                    path:      /blog/{page}
-                    defaults:  { _controller: AcmeDemoBundle:Blog:index, page: 1 }
+                    path: /blog/{page}
+                    defaults:
+                        _controller: AcmeDemoBundle:Blog:index
+                        page: 1
             </pre>
 
             <p>Will match <code>/blog</code> (page=1) and <code>/blog/3</code> (page=3), but not <code>/blog/</code>.</p>
 
             <pre class="brush: js">
                 blog_categories:
-                    path:      /blog/{category1}/{category2}/{category3}
-                    defaults:  { _controller: AcmeDemoBundle:Blog:byCategories, category2: "", category3: "" }
+                    path: /blog/{category1}/{category2}/{category3}
+                    defaults:
+                        _controller: AcmeDemoBundle:Blog:byCategories
+                        category2: ""
+                        category3: ""
             </pre>
 
             <p>Will match <code>/blog/php</code> and <code>/blog/php/symfony</code> and<code>/blog/php/symfony/ezpublish</code>, but not <code>/blog</code>.</p>
 
             <!-- <p>Sometimes it is necessary to create multiple routes for the same thing to achieve the desired result. For example for optional parts in the middle of the path.</p> -->
-            <p>Do you see a problem when using both these routes?</p>
+            <!-- <p>Do you see a problem when using both these routes?</p> -->
         </div>
 
         <div class="slide">
@@ -289,9 +294,11 @@
             <p>By default, a route matches any HTTP method, any scheme and any host/domain.</p>
 
             <pre class="brush: js">
-                blog_article:
-                    path:      /blog/{slug}.{_format}
-                    defaults:  { _controller: AcmeDemoBundle:Blog:article, _format: html }
+            blog_article:
+                path:      /blog/{slug}.{_format}
+                defaults:
+                    _controller: AcmeDemoBundle:Blog:article
+                    _format: html
             </pre>
 
             <p>What is the default requirement (regex) for <code>slug</code> and <code>_format</code>?</p>
@@ -309,13 +316,13 @@
             <h1>Custom route requirements</h1>
 
             <pre class="brush: js">
-                blog_archive:
-                    path:      /blog/{date}
-                    defaults:  { _controller: AcmeDemoBundle:Blog:byDate }
-                    methods:   [GET, PUT] # HEAD implicit
-                    schemes:   https
-                    requirements:
-                        date:  \d{4}-\d{1,2}-\d{1,2}
+              blog_archive:
+                path:     /blog/{date}
+                defaults: {_controller: AcmeDemoBundle:Blog:byDate}
+                methods:  [GET, PUT] # HEAD implicit
+                schemes:  https
+                requirements:
+                  date: \d{4}-\d{1,2}-\d{1,2}
             </pre>
 
             <p>By overriding the default requirement, you can also allow a "/" character in a placeholder.</p>
@@ -325,10 +332,10 @@
             <h1>Host matching</h1>
 
             <pre class="brush: js">
-                user_profile:
-                    path:     /
-                    host:     {user}.%domain%
-                    defaults: { _controller: AcmeDemoBundle:User:profile }
+              profile:
+                path:     /
+                host:     {user}.%domain%
+                defaults: {_controller: AcmeDemoBundle:User:profile}
             </pre>
 
             <pre class="brush: js">
@@ -340,7 +347,9 @@
             <p>It makes the domain configurable via service container parameters so you can change it depending on the environment.</p>
 
             <pre class="brush: xml">
-                <a href="{{ path('user_profile', {'user': user.slug}) }}">Profile</a>
+                <a href="{{ path('profile', {'user': user.slug}) }}">
+                    Profile
+                </a>
             </pre>
 
             <p>It will automatically generate an absolute URL when the resulting host is different from the current.</p>
@@ -390,16 +399,19 @@
             </ul>
 
             <pre class="brush: php">
-                // simplified example
-                if (0 === strpos($pathinfo, '/about')) {
-                    if ($pathinfo === '/about/symfony')) {
-                        return array('_controller' => '...', '_route' => '...')
-                    }
-
-                    if (preg_match('#^/about/...$#', $pathinfo, $matches)) {
-                        return $matches;
-                    }
+              // simplified example
+              if (0 === strpos($pathinfo, '/about')) {
+                if ($pathinfo === '/about/symfony')) {
+                    return array(
+                        '_controller' => '...',
+                        '_route' => '...'
+                    )
                 }
+
+                if (preg_match('#^/about/...$#', $pathinfo, $m)) {
+                  return $m;
+                }
+              }
             </pre>
         </div>
 
@@ -510,7 +522,7 @@
                 {
                   parent::build($con);
 
-                  $con->addCompilerPass(new CustomCompilerPass());
+                  $con->addCompilerPass(new MyCompilerPass());
                 }
               }
             </pre>
@@ -537,7 +549,7 @@
             <h1>Bundle compiler passes</h1>
 
             <pre class="brush: php">
-              class CustomCompilerPass implements CompilerPassInterface
+              class MyCompilerPass implements CompilerPassInterface
               {
                 public function process(ContainerBuilder $con)
                 {
@@ -548,6 +560,7 @@
                   $def = $con->getDefinition('acme_demo.service');
                   $ids =
                     $con->findTaggedServiceIds('acme_demo.tag');
+
                   foreach ($ids as $id => $attribs) {
                     $def->addMethodCall(
                       'addSomeDependency',
