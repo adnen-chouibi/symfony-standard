@@ -107,7 +107,7 @@
                 <li>Core Extension</li>
                 <li>Function vs Filter</li>
                 <li>Extension options</li>
-                <li>Exercise: Implement custom filter/function</li>
+                <li>Exercise: Implement custom function</li>
                 <li>Exercise: Implement custom test</li>
                 <li>Exercise: Implement custom tag</li>
             </ul>
@@ -124,13 +124,18 @@
             require_once '/path/to/lib/Twig/Autoloader.php';
             Twig_Autoloader::register();
 
-            $loader = new Twig_Loader_Filesystem('/path/to/templates');
+            $loader = new Twig_Loader_Filesystem(
+                '/path/to/templates'
+            );
             $twig = new Twig_Environment($loader, array(
                 'cache' => '/path/to/compilation_cache',
             ));
 
             // load and render the template in one step
-            echo $twig->render('index.html', array('the' => 'variables', 'go' => 'here'));
+            echo $twig->render('index.html', array(
+                'the' => 'variables',
+                'go' => 'here'
+            ));
             </pre>
 
             <!--
@@ -172,7 +177,7 @@
             <h1>Core Extension</h1>
             <ul>
                 <li>Everything in twig is loaded by an extension class (even the core functionality)</li>
-                <li><strong>filters</strong> for value transformation, e.g. <code>{{ 'WELCOME'|lower }}</code></li>
+                <li><strong>filters</strong> for value transformation, e.g. <code>{{ 'HEY'|lower }}</code></li>
                 <li><strong>functions</strong> for content generation, e.g. <code>{{ random(5) }}</code></li>
                 <li><strong>tests</strong> for boolean decision, e.g. <code>{{ var is even }}</code></li>
                 <li><strong>operators</strong> for values transformation, e.g. <code>{{ 1 + 1 }}</code></li>
@@ -183,33 +188,56 @@
 
         <div class="slide">
             <h1>Function vs Filter</h1>
-            <ol>
-                <li><code>{% knp_menu('main' } %}</code> vs<br /><code>{{ 'main'|knp_menu }}</code></li>
+            <ul>
+                <li><code>{{ knp_menu('main') }}</code> vs<br /><code>{{ 'main'|knp_menu }}</code></li>
                 <li>Filters transform a already meaningful value to a different representation or adapt it.</li>
                 <li>Functions generate content that you probably do not need to chain with other filters, like a full HTML menu or an object.</li>
-            </ol>
+            </ul>
         </div>
 
         <div class="slide">
             <h1>Extension options</h1>
-            <ol>
-                <li>needs_environment</li>
-                <li>needs_context</li>
-                <li>pre_escape</li>
-                <li>is_safe</li>
-                <li>is_safe_callback</li>
-            </ol>
+            <ul>
+                <li><strong>needs_environment</strong>: get access to the environment, e.g. charset and other configs</li>
+                <li><strong>needs_context</strong>: get access to <em>all</em> variables defined in the template</li>
+                <li><strong>pre_escape</strong>: escape the value before passing it to the function, e.g. nl2br</li>
+                <li><strong>is_safe:</strong>: for which format your function is returning safe html intentionally</li>
+                <li><strong>is_safe_callback</strong>: same as is_safe but with callback at compilation time</li>
+            </ul>
         </div>
 
         <!-- http://symfony.com/doc/current/cookbook/templating/twig_extension.html -->
 
         <div class="slide">
-            <h1>Exercise: Implement custom filter/function</h1>
+            <h1>Exercise: Implement custom function (1)</h1>
             <ul>
-                <li>Scenario: </li>
-                <li>Solution: </li>
-                <li>Implementation: </li>
-                <li>Documentation: <a href=""></a></li>
+                <li><strong>Scenario</strong>: Generating a class-attribute using conditions is quite ugly and problematic (empty class-attribute is invalid html).
+                <pre class="brush: js">
+                class="{%
+                  if team.promoted %}promoted {% endif %}{%
+                  if team.relegated %}relegated {% endif %}{%
+                  if team.withdrawn %}withdrawn {% endif %}"
+                </pre>
+
+                So instead we want to use a custom function like
+                <pre class="brush: js">
+                {{ class_attribute({
+                    'promoted': team.promoted,
+                    'relegated': team.relegated,
+                    'withdrawn': team.withdrawn
+                }) }}
+                </pre>
+                </li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Exercise: Implement custom function (2)</h1>
+            <ul>
+                <li><strong>Solution</strong>: We add our custom function which receives a hash/array and returns the class attribute <code>class="..."</code> with the array keys as class names if the corresponding value evaluates to true.</li>
+                <li><strong>Implementation</strong>: Add class extending <code>\Twig_Extension</code> which provides such function and tell twig about the extension with the symfony DI tag <code>twig.extension</code>.</li>
+                <li><strong>Documentation</strong>: <a href="http://symfony.com/doc/current/cookbook/templating/twig_extension.html">How to write a custom Twig Extension</a></li>
+                <li><strong>Test</strong>: <a href="http://advsf2.ezsc/app_dev.php/classattribute">http://advsf2.ezsc/app_dev.php/classattribute</a></li>
             </ul>
         </div>
 
@@ -217,23 +245,34 @@
             <h1>Exercise: Implement custom test</h1>
 
             <ul>
-                <li>Scenario: We want to check whether a string matches a regular expression.</li>
-                <li>Solution: </li>
-                <li>Implementation: matchingregex()</li>
-                <li>Documentation: <a href=""></a></li>
+                <li><strong>Scenario</strong>: We want to check whether a string matches a regular expression.</li>
+                <li><strong>Solution</strong>:
+                <pre class="brush: js">
+                {% if 'foobar' is matchingregex('#^fo{2}#')
+                %}OK{% endif %}
+                </pre>
+                </li>
+                <li><strong>Implementation</strong>: Register our custom test method by providing a <code>getTests()</code> method in the extension. The test method can use <code>preg_match</code>.</li>
+                <li><strong>Test</strong>: <a href="http://advsf2.ezsc/app_dev.php/matchingregex">http://advsf2.ezsc/app_dev.php/matchingregex</a></li>
             </ul>
-
-            <pre class="brush: js">
-
-            </pre>
         </div>
 
         <div class="slide">
             <h1>Exercise: Implement custom tag</h1>
 
-            <pre class="brush: php">
-
-            </pre>
+            <ul>
+                <li><strong>Scenario</strong>: We want to stop script execution for a specified time (artificial example).</li>
+                <li><strong>Solution</strong>: Add tag <code>sleep</code> that allows one argument for the time.
+                <pre class="brush: js">
+                {% sleep 1 %}
+                {# might also be an expression #}
+                {% sleep (1 - 3)|abs %}
+                </pre>
+                </li>
+                <li><strong>Implementation</strong>: Add a <code>\Twig_TokenParser</code> which gets activated for the tag and returns a <code>\Twig_Node</code>. This node is responsible for compiling, i.e. writing the neccessary PHP code. You can simply use the PHP function <code>sleep</code>.</li>
+                <li><strong>Documentation</strong>: Follow the <a href="https://github.com/fabpot/Twig-extensions/blob/master/lib/Twig/Extensions/Extension/Debug.php">Debug Extension</a></li>
+                <li><strong>Test</strong>: <a href="http://advsf2.ezsc/app_dev.php/sleep">http://advsf2.ezsc/app_dev.php/sleep</a></li>
+            </ul>
         </div>
 
     </body>
