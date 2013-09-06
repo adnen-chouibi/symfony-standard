@@ -113,6 +113,18 @@
             </ul>
         </div>
 
+        <div class="slide section">
+            <h1>Updating the virtual machine</h1>
+            <ul>
+                <li>ssh ezsc@192.168.56.150</li>
+                <li>cd /var/www/advsf2</li>
+                <li>git fetch origin</li>
+                <li>git checkout workshop-twig-extensions</li>
+                <li>If checkout fails with local changes, remove them, e.g. you might need <code>rm composer.lock</code> or <code>git stash save</code> and do the checkout again.</li>
+                <li>Slides available at www/advsf2/slides/writing-custom-twig-extensions/slides.html</li>
+            </ul>
+        </div>
+
         <div class="slide">
             <h1>Twigs architecture</h1>
             <ul>
