@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- To render these slides you need Slippy https://github.com/Seldaek/slippy -->
+
+        <title>Advanced Symfony2</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <meta name="author" content="Lukas Kahwe Smith, Tobias Schultze" />
+        <meta name="date" content="2013-09-05" />
+        <meta name="venue" content="Bol, Croatia" />
+
+        <!-- Slippy core file and dependencies -->
+        <script type="text/javascript" src="slippy/src/jquery.min.js"></script>
+        <script type="text/javascript" src="slippy/src/jquery.history.js"></script>
+        <script type="text/javascript" src="slippy/src/slippy.js"></script>
+        <!-- Slippy structural styles -->
+        <link type="text/css" rel="stylesheet" href="slippy/src/slippy.css"/>
+        <!-- Slippy theme -->
+        <link type="text/css" rel="stylesheet" href="slippy/src/slippy-pure.css"/>
+        <!-- Syntax highlighting core file  -->
+        <script type="text/javascript" src="slippy/src/highlighter/shCore.js"></script>
+        <!-- Syntax highlighting brushes, remove those you don't need -->
+        <script type="text/javascript" src="slippy/src/highlighter/shBrushPhp.js"></script>
+        <script type="text/javascript" src="slippy/src/highlighter/shBrushPlain.js"></script>
+        <script type="text/javascript" src="slippy/src/highlighter/shBrushJScript.js"></script>
+        <script type="text/javascript" src="slippy/src/highlighter/shBrushXml.js"></script>
+        <!-- Syntax highlighting styles-->
+        <link type="text/css" rel="stylesheet" href="slippy/src/highlighter/shCore.css"/>
+        <link type="text/css" rel="stylesheet" href="slippy/src/highlighter/shThemeEclipse.css"/>
+
+        <style type="text/css">
+            body > * {
+                font-size: 1.2em;
+            }
+
+            body {
+                background: #fff;
+            }
+
+            div.syntaxhighlighter {
+                background: #aaa !important;
+            }
+
+            span.file {
+                font-size: 0.8em;
+                color: #f00;
+                float: right;
+                margin: -.2em .5em 0 0;
+            }
+
+            .smallcode {
+                font-size: 0.8em;
+            }
+
+            strong {
+                color: #662222;
+            }
+
+            li {
+                line-height: 1.2em;
+            }
+            .footer, h1 {
+                background: #eeeeee;
+                border: solid #cccccc 1px;
+                border-radius: 5px;
+                padding: 8px;
+            }
+            .section h1 {
+                background: #fff;
+                border: none;
+                font-size: 2em;
+            }
+            .footer {
+                background: #fff;
+                margin: 10px;
+                margin-top: 0;
+                width: 97%;
+            }
+        </style>
+        <!-- Slippy init code -->
+        <script type="text/javascript">
+            $(function() {
+                $(".slide").slippy({
+                });
+                SyntaxHighlighter.all();
+            });
+        </script>
+    </head>
+
+    <body>
+
+        <div class="footer">
+            <span class="left"><a href="http://ezsummercamp.com/">eZ Publish Summer Camp 2013</a><br/><a href="http://ezsummercamp.com/program/advanced_symfony2">Advanced Symfony2</a></span>
+            <span class="right"><a href="http://pooteeweet.org/">Lukas Kahwe Smith</a><br/><a href="https://github.com/Tobion">Tobias Schultze</a></span>
+            <hr class="defloat" />
+        </div>
+
+        <div class="slide section">
+            <h1>Advanced Symfony2 Agenda</h1>
+            <ul>
+                <li>Kernel</li>
+                <li>Routing</li>
+                <li>Bundles</li>
+                <li>Dependency Injection Container</li>
+                <li>Data Collector</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Kernel</h1>
+            <ul>
+                <li>Overview</li>
+                <li>Request processing</li>
+                <li>Events</li>
+                <li>Controller Resolver</li>
+                <li>Write an event listener exercise</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Kernel overview</h1>
+            <ul>
+                <li>Convert a Request instance into a Response instance</li>
+                <li>Must implement the <a href="https://github.com/symfony/HttpKernel/blob/master/HttpKernelInterface.php#L24" target="_new">HttpKernelInterface</a></li>
+                <li>Custom logic is implemented in Bundles</li>
+                <li>Makes extensive use of events to allow for extensibility</li>
+                <li><strong>Note:</strong> A Request might lead to any number of Sub-Requests</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Kernel request processing</h1>
+            <ol>
+                <li>Bootstrap all Bundles and the application configuration</li>
+                <li>Trigger kernel.request event, if a Response was set jump to 8</li>
+                <li>Determine the controller to execute</li>
+                <li>Trigger the kernel.controller event</li>
+                <li>Kernel calls the controller</li>
+                <li>Trigger kernel.view event if no Response was returned</li>
+                <li>Trigger kernel.response event</li>
+                <li>Return the Response</li>
+            </ol>
+        </div>
+
+        <div class="slide">
+            <h1>Kernel Events</h1>
+            <ul>
+                <li>kernel.request</li>
+                <li>kernel.controller</li>
+                <li>kernel.view (*)</li>
+                <li>kernel.response</li>
+                <li>kernel.terminate (*)</li>
+                <li>kernel.exception (*)</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Configuring a Kernel Events</h1>
+
+            <pre class="brush: js">
+                acme.demo.request_head_listener:
+                    class: Acme\DemoBundle\EventListener\MyListener
+                    tags:
+                        - {
+                            name: kernel.event_listener,
+                            event: kernel.request,
+                            method: onKernelRequest,
+                            priority: -129
+                        }
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Listener can subscribe to events themselves</h1>
+            <pre class="brush: php">
+                class MyListener implements EventSubscriberInterface
+                {
+                    public static function getSubscribedEvents()
+                    {
+                        return array(
+                            KernelEvents::REQUEST => array(
+                                'onKernelRequest', -129
+                            )
+                        );
+                    }
+                }
+            </pre>
+            <pre class="brush: js">
+                acme.demo.request_head_listener:
+                    class: Acme\DemoBundle\EventListener\MyListener
+                    tags:
+                        - {
+                            name: kernel.event_subscribe
+                        }
+            </pre>
+        </div>
+
+        <div class="slide section">
+            <h1>Updating the virtual machine</h1>
+            <ul>
+                <li>ssh ezsc@192.168.56.150</li>
+                <li>cd /var/www/advsf2</li>
+                <li>rm composer.lock</li>
+                <li>git fetch origin</li>
+                <li>git checkout workshop-advanced-symfony</li>
+                <li>git pull --rebase</li>
+                <li>git branch -D workshop-routing</li>
+                <li>file:///Volumes/www/advsf2/slides/advanced-symfony2/slides.html</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Exercise: Write a custom listener</h1>
+            <ul>
+                <li><strong><strong>Scenario:</strong></strong> We are using a reverse proxy in front of a website with a complex authentication and permission scheme</li>
+                <li><strong>Solution:</strong> Rewrite all GET Requests to HEAD Requests, check for a 200 Response before serving content from the cache</li>
+                <li><strong>Implementation:</strong> Write a listener for the kernel.request event. Ensure this listener has a lower priority than the firewall listener (priority 8). Return a 200 Response for any HEAD Request.</li>
+                <li><strong>Documentation:</strong> <a href="http://symfony.com/doc/current/book/internals.html#events">Internals: Events</a></li>
+                <li><strong>Tip:</strong> Test using <a href="https://addons.mozilla.org/en-us/firefox/addon/poster/">Firefox Poster</a>,
+                    <a href="http://httpie.org/">httpie</a>
+                    or the following curl command: curl -I http://advsf2.ezsc/app_dev.php/
+                </li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Kernel Controller Resolver</h1>
+            <ul>
+                <li>Determines the controller to load and what action method to call by reading Request::get('_controller')</li>
+                <li>Creates the controller instance if necessary</li>
+                <li>Additionally determines the parameters to pass to the controller action method</li>
+                <li><strong>Note:</strong> kernel.controller event is triggered between determining and creating the controller and determining the action method parameters</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Routing</h1>
+            <ul>
+                <li>Required and optional placeholders</li>
+                <li>Route requirements</li>
+                <li>Host matching</li>
+                <li>Write a custom route loader exercise</li>
+                <li>Dumped routes for performance</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Required and optional placeholders</h1>
+
+            <p>Only Placeholders at the end of the pattern with a default are optional.</p>
+            <p>For multiple optional placeholders each one must have a default and be separated by a single delimiter.</p>
+
+            <pre class="brush: js">
+                blog:
+                    path: /blog/{page}
+                    defaults:
+                        _controller: AcmeDemoBundle:Blog:index
+                        page: 1
+            </pre>
+
+            <p>Will match <code>/blog</code> (page=1) and <code>/blog/3</code> (page=3), but not <code>/blog/</code>.</p>
+
+            <pre class="brush: js">
+                blog_categories:
+                    path: /blog/{category1}/{category2}/{category3}
+                    defaults:
+                        _controller: AcmeDemoBundle:Blog:byCategories
+                        category2: ""
+                        category3: ""
+            </pre>
+
+            <p>Will match <code>/blog/php</code> and <code>/blog/php/symfony</code> and<code>/blog/php/symfony/ezpublish</code>, but not <code>/blog</code>.</p>
+
+            <!-- <p>Sometimes it is necessary to create multiple routes for the same thing to achieve the desired result. For example for optional parts in the middle of the path.</p> -->
+            <!-- <p>Do you see a problem when using both these routes?</p> -->
+        </div>
+
+        <div class="slide">
+            <h1>Route requirements</h1>
+
+            <ul>
+                <li><code>/blog/php</code> will match route "blog" (page=php) instead of "blog_categories".</li>
+                <li>Route matching happens the order you define them. So if you have routes that overlap, later routes might never match.</li>
+                <!-- So you have to choose your route order, paths and requirements carefully. -->
+                <li><strong>Note:</strong> Use "app/console router:match /foo/bar" to test</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Default route requirements</h1>
+
+            <p>By default, a route matches any HTTP method, any scheme and any host/domain.</p>
+
+            <pre class="brush: js">
+            blog_article:
+                path:      /blog/{slug}.{_format}
+                defaults:
+                    _controller: AcmeDemoBundle:Blog:article
+                    _format: html
+            </pre>
+
+            <p>What is the default requirement (regex) for <code>slug</code> and <code>_format</code>?</p>
+
+            <ul>
+                <li class="incremental">app/console router:debug blog_article</li>
+                <li class="incremental">Path-Regex: <code>#^/blog/(?P&lt;slug&gt;[^/\.]++)(?:\.(?P&lt;_format&gt;[^/]++))?$#s</code></li>
+                <li class="incremental">slug: <code>[^/\.]++</code></li>
+                <li class="incremental">_format: <code>[^/]++</code></li>
+                <li class="incremental"><code>++</code> is a possessive quantifier</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Custom route requirements</h1>
+
+            <pre class="brush: js">
+              blog_archive:
+                path:     /blog/{date}
+                defaults: {_controller: AcmeDemoBundle:Blog:byDate}
+                methods:  [GET, PUT] # HEAD implicit
+                schemes:  https
+                requirements:
+                  date: \d{4}-\d{1,2}-\d{1,2}
+            </pre>
+
+            <p>By overriding the default requirement, you can also allow a "/" character in a placeholder.</p>
+        </div>
+
+        <div class="slide">
+            <h1>Host matching</h1>
+
+            <pre class="brush: js">
+              profile:
+                path:     /
+                host:     {user}.%domain%
+                defaults: {_controller: AcmeDemoBundle:User:profile}
+            </pre>
+
+            <pre class="brush: js">
+                parameters:
+                    domain: example.com
+            </pre>
+
+            <p>The host option uses the same pattern style like path. But it doesn't support optional placeholders yet.</p>
+            <p>It makes the domain configurable via service container parameters so you can change it depending on the environment.</p>
+
+            <pre class="brush: xml">
+                <a href="{{ path('profile', {'user': user.slug}) }}">
+                    Profile
+                </a>
+            </pre>
+
+            <p>It will automatically generate an absolute URL when the resulting host is different from the current.</p>
+            <!-- <p>So you can change the route definition and for example put the user placeholder in the path without needing to change your code/template.
+            This abstraction is one of the main points of using the routing component.</p> -->
+        </div>
+
+        <div class="slide">
+            <h1>Exercise: Write a custom route loader (1)</h1>
+
+            <ul>
+                <li><strong><strong>Scenario:</strong></strong> We have controllers in a filesystem like
+<pre style="margin: 10px 0">
+├── Controller
+│   ├── about
+│   │   ├── ezpublish.php
+│   │   └── symfony.php
+│   └── news.php
+</pre>
+                (see FilesystemRoutingBundle) and want to make them accessible <em>automatically</em> via URL paths that represent this directory structure
+                (<code>/about/ezpublish</code>, <code>/about/symfony</code>, <code>/news</code>).
+                </li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Exercise: Write a custom route loader (2)</h1>
+
+            <ul>
+                <li><strong>Solution:</strong> Create a route loader that loads routes based on the file system structure. The directories and files represent the URL path segments.
+                The file itself contains the Controller class and a "getAction" method that is executed for a GET request on the corresponding route. The routes
+                are static because placeholders do not exist.</li>
+                <li><strong>Implementation</strong>: The route loader accepts imports with "type: filesystem" and interates over all controller files in a directory and adds routes with the corresponding URL path for them.</li>
+                <li><strong>Documentation:</strong> <a href="http://symfony.com/doc/current/cookbook/routing/custom_route_loader.html">Custom route loader</a></li>
+                <li><strong>Test:</strong> <a href="http://advsf2.ezsc/app_dev.php/about/symfony">http://advsf2.ezsc/app_dev.php/about/symfony</a></li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Dumped routes for performance</h1>
+
+            <ul>
+                <li>Symfony dumps routes to cache files which are used to increase performance of matching and generating.</li>
+                <li>For matching it arranges routes in a tree structure with common prefix.</li>
+                <li>Have a look at <code>app/cache/dev/appDevUrlMatcher.php</code></li>
+                <!-- <li>It's also possible to dump routes as Apache Rewrite Rules (currently has some limitations).</li> -->
+            </ul>
+
+            <pre class="brush: php">
+              // simplified example
+              if (0 === strpos($pathinfo, '/about')) {
+                if ($pathinfo === '/about/symfony')) {
+                    return array(
+                        '_controller' => '...',
+                        '_route' => '...'
+                    )
+                }
+
+                if (preg_match('#^/about/...$#', $pathinfo, $m)) {
+                  return $m;
+                }
+              }
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Bundles</h1>
+            <ul>
+                <li>Bootstrapping</li>
+                <li>Extensions</li>
+                <li>Configuration</li>
+                <li>Compiler passes</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Bundle bootstrapping</h1>
+            <ul>
+                <li>Bundle boot() method is called</li>
+                <li>Determine if the Container needs to be generated:<br />cache is empty or when in debug mode and any existing config file has changes</li>
+                <ul>
+                    <li>call prepend() method on any Bundle that has an Extension that implements PrependExtensionInterface</li>
+                    <li>call load() method on any Bundle that has an Extension</li>
+                </ul>
+                <li>Serialize the Container to PHP and write the file to the cache</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Bundle extensions</h1>
+            <ul>
+                <li>Optional way to add Bundle specific services to the Container</li>
+                <li>Define a Configuration class to validate and merge configuration</li>
+                <li>By using a Configuration class its possible to use: app/console config:dump-reference acme_demo</li>
+                <li>Create services and parameters in the Container by loading configuration files or by code</li>
+                <li>PrependExtensionInterface::prepend() method can change the defaults in other Bundles</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Extension class</h1>
+
+            <pre class="brush: php">
+            class AcmeDemoExtension extends Extension
+                implements PrependExtensionInterface {
+              public function prepend(ContainerBuilder $con)
+              {
+                $con->prependExtensionConfig('acme_foo', $config);
+              }
+
+              public function load(
+                array $configs, ContainerBuilder $con
+              ) {
+                $config = $this->processConfiguration(
+                  new Configuration(), $configs
+                );
+                $configDir = __DIR__.'/../Resources/config';
+                $locator = new FileLocator($configDir);
+                $loader = new XmlFileLoader($con, $locator);
+                $loader->load('services.xml');
+                $con->setParameter(
+                  'acme_demo.hello', $config['hello']
+                );
+            } }
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Configuration class</h1>
+
+            <pre class="brush: php">
+              public function getConfigTreeBuilder()
+              {
+                $treeBuilder = new TreeBuilder();
+                $rootNode = $treeBuilder->root('acme_demo');
+
+                $rootNode
+                  ->children()
+                    ->scalarNode('hello')
+                        ->defaultValue('world')->end()
+                    ->fixXmlConfig('filter', 'filters')
+                    ->children()
+                      ->booleanNode('foo')->defaultFalse()->end()
+                      ->scalarNode('bar')->defaultNull()->end()
+                    ->end()
+                  ->end();
+
+                return $treeBuilder;
+              }
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Bundle compiler passes</h1>
+            <ul>
+                <li>Compiler passes make it possible to manipulate the DIC after all Bundle load() methods have been processed.</li>
+                <li>Main use case is to deal with interdependent services of different Bundles, often leveraging service tags</li>
+                <li>Compiler passes is registered in the Bundles boot() method</li>
+                <li>Compiler pass has access to the ContainerBuilder instance</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Bundle compiler passes</h1>
+
+            <pre class="brush: php">
+              class AcmeDemoBundle extends Bundle
+              {
+                public function build(ContainerBuilder $con)
+                {
+                  parent::build($con);
+
+                  $con->addCompilerPass(new MyCompilerPass());
+                }
+              }
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Bundle compiler passes</h1>
+
+            <pre class="brush: js">
+                services:
+                    acme_demo.service:
+                        class: %acme.service_class%
+
+                    acme_demo.some_service:
+                        class: %acme_demo.some_service_class%
+                        arguments:
+                            - "@acme_demo.other_service"
+                        tags:
+                            -  { name: acme_demo.tag, alias: foo }
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Bundle compiler passes</h1>
+
+            <pre class="brush: php">
+              class MyCompilerPass implements CompilerPassInterface
+              {
+                public function process(ContainerBuilder $con)
+                {
+                  if (!$con->hasDefinition('acme_demo.service')) {
+                    return;
+                  }
+
+                  $def = $con->getDefinition('acme_demo.service');
+                  $ids =
+                    $con->findTaggedServiceIds('acme_demo.tag');
+
+                  foreach ($ids as $id => $attribs) {
+                    $def->addMethodCall(
+                      'addSomeDependency',
+                      array(new Reference($id), $attribs['alias'])
+                    );
+                  }
+                }
+              }
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Dependency Injection Container</h1>
+            <ul>
+                <li>Scopes</li>
+                <li>Synchronized services</li>
+                <li>Synthetic services</li>
+                <li>Private/public services</li>
+                <li>Configure controllers as services, service inheritance, lazy services exercise</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Scopes</h1>
+            <ul>
+                <li>Controls in what circumstances a given service instance is returned multiple times
+                <ul>
+                    <li><strong>container</strong> (the default one): The same instance is used each time you request it from this container</li>
+                    <li><strong>prototype</strong>: A new instance is created each time you request the service.</li>
+                    <li><strong>request</strong>: A new instance is created for each subrequest and is unavailable outside a request (fe. on the CLI)</li>
+                </ul>
+                </li>
+                <li>A service cannot depend on services from a narrower scope.</li>
+                <li>Why do scopes exist and how to work with them?</li>
+                <!-- Example: Mailer service in container scope that depends on the Request.
+                When using the mailer service in a subrequest it would still have the old request instance of the master request.
+                Solutions:
+                  - Injecting the full container (bad practice)
+                  - Synchronized services -->
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Synchronized services</h1>
+            <ul>
+                <li>Whenever the Request scope is entered or left, the service container will automatically call
+                    the setRequest() method with the current request instance</li>
+                <li><strong>Note:</strong> The current request instance may be null</li>
+            </ul>
+
+            <pre class="brush: js">
+            services:
+              greeting_card_manager:
+                class: Acme\HelloBundle\Mail\GreetingCardManager
+                calls:
+                  - [setRequest, ['@?request=']]
+            </pre>
+
+            <pre class="brush: js">
+            services:
+              request:
+                scope: request
+                synchronized: true
+                synthetic: true # see next topic
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Synthetic services</h1>
+            <ul>
+                <li>Synthetic services are services that are injected into the Container instead of being created by the Container.</li>
+                <li>For example, the <a href="https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php#L54">ContainerAwareHttpKernel::handle()</a>
+                    method injects the Request when entering the Request scope. The class does not exist when there is no Request,
+                    so it can't be included in the Container configuration.</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Private/public services</h1>
+            <ul>
+                <li>A service should be private when there is no need to access it directly from the Container.</li>
+                <li>This is common when a service is only defined because it could be used as an argument for another service.</li>
+            </ul>
+
+            <pre class="brush: js">
+            services:
+                foo:
+                    class: Example\Foo
+                    public: false
+            </pre>
+
+            <pre class="brush: php">
+            $container->get('foo'); // will not work
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Exercise: Configure controllers as services, service inheritance, lazy services (1)</h1>
+            <ul>
+                <li><strong><strong>Scenario:</strong></strong> We are defining controllers as services and always have a similar set of dependencies (see DependencyInjectionBundle)</li>
+                <li><strong>Solution:</strong> We define an abstract service which gets our standard dependencies injected</li>
+                <li><strong>Implementation:</strong> Configure the generic service like you normally do and set "abstract" to "true", reuse the abstract service with the "parent" setting. Since the "MyMailer" service is heavy to instantiate, it should be defined as lazy (you need to install ocramius/proxy-manager).</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Exercise: Configure controllers as services, service inheritance, lazy services (2)</h1>
+            <ul>
+                <li><strong>Documentation:</strong>
+                    <ul>
+                        <li><a href="http://symfony.com/doc/current/cookbook/controller/service.html">How to define Controllers as Services</a></li>
+                        <li><a href="http://symfony.com/doc/current/components/dependency_injection/parentservices.html">Managing Common Dependencies with Parent Services</a></li>
+                        <li><a href="http://symfony.com/doc/current/components/dependency_injection/lazy_services.html">Lazy services</a></li>
+                    </ul></li>
+                <li><strong>Test:</strong>
+                    <ul>
+                        <li><a href="http://advsf2.ezsc/app_dev.php/newsletter/send/message">http://advsf2.ezsc/app_dev.php/newsletter/send/message</a> should be accessible</li>
+                        <li><a href="http://advsf2.ezsc/app_dev.php/newsletter/lazy">http://advsf2.ezsc/app_dev.php/newsletter/lazy</a> should show that a lazy proxy is used</li>
+                    </ul>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Data Collector</h1>
+            <ul>
+                <li>Overview</li>
+                <li>Write a data collector exercise</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Data Collector</h1>
+            <ul>
+                <li>Allows collecting data into the profiler database using a very simple Interface</li>
+                <li>Allows displaying collected data in the web debug toolbar as well as inside the profiler UI</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>Implementing a data collector</h1>
+
+            <pre class="brush: php">
+            class SomeDataCollector extends DataCollectorInterface
+            {
+                public function collect(
+                    Request $request,
+                    Response $response,
+                    \Exception $exception = null
+                ) {
+                    ..
+                }
+
+                public function getName()
+                {
+                    return 'some_data_collector';
+                }
+            }
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Defining a data collector service</h1>
+
+            <pre class="brush: js">
+            services:
+              acme_demo.some_collector:
+              class: %acme_demo.some_collector_class%
+              tags:
+                - {
+                  name: data_collector,
+                  template: AcmeDemoBundle:Collector:some_service,
+                  id: some_service_collector
+                }
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Implementing a UI for a data collector</h1>
+
+            <pre class="brush: plain">
+              {% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
+
+              {% block toolbar %}
+                {% set icon %}..{% endset %}
+                {% set text %}..{% endset %}
+                {% include
+                  'WebProfilerBundle:Profiler:toolbar_item.html.twig'
+                  with { 'link': profiler_url } %}
+              {% endblock %}
+
+              {% block head %}
+                {# should usually be omitted or use {{ parent() }}
+              {% endblock %}
+
+              {# only relevant if you also provide a profiler UI }}
+              {% block menu %}..{% endblock %}
+              {% block panel %}..{% endblock %}
+            </pre>
+        </div>
+
+        <div class="slide">
+            <h1>Exercise: Define a data collector that counts the calls to a custom service</h1>
+            <ul>
+                <li><strong><strong>Scenario:</strong></strong> We have a service "acme_demo.some_service" that we use in <a href="http://advsf2.ezsc/app_dev.php/demo/hello/world">various places</a> and we want to get a better overview how often it is called.</li>
+                <li><strong>Solution:</strong> We add a data collector that is notified inside the service to collect the information.</li>
+                <li><strong>Implementation:</strong> Define a data collector service, define a dummy service that allows registering loggers that get notified when the service is used. Inject that service into the data collector so that it can register itself as a logger.</li>
+                <li><strong>Documentation:</strong> <a href="http://symfony.com/doc/current/cookbook/profiler/data_collector.html">How to create a custom Data Collector</a></li>
+                <li><strong>Extra credit:</strong> Define profiler templates to display the parameter passed to it.</li>
+                <li><strong>Tip:</strong> Check DoctrineBundle:Collector:db for inspiration</li>
+            </ul>
+        </div>
+
+    </body>
+</html>
