@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new Liip\UrlAutoConverterBundle\LiipUrlAutoConverterBundle(),
 
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
 
 //            new SimpleThings\FormSerializerBundle\SimpleThingsFormSerializerBundle(),
         );

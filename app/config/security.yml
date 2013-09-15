@@ -46,8 +46,8 @@ security:
         main:
             pattern:   ^/liip/
             form_login:
-                login_path: /login
-                check_path: /login-check
+                login_path: /liip/login
+                check_path: /liip/login-check
                 provider: fos_userbundle
 
             fos_facebook:

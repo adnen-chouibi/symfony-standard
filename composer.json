@@ -30,7 +30,8 @@
         "liip/code-bundle": "0.5.*",
         "sensiolabs/security-checker": "v1.1",
         "wjzijderveld/check-bundles": "dev-master",
-        "egulias/listeners-debug-command-bundle": "dev-master"
+        "egulias/listeners-debug-command-bundle": "dev-master",
+        "willdurand/hateoas-bundle": "@stable"
     },
     "scripts": {
         "post-install-cmd": [

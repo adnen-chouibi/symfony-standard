@@ -105,18 +105,11 @@ fos_rest:
     access_denied_listener:
         json: true
     format_listener:
-        default_priorities:
-            - html
-            - json
-            - xml
-            - rss
-            - "*/*"
-            # never reached due to "*/*"
-            - ding
-        # the subsequent line overrides the following line, so the default is NULL
-        fallback_format: json
-        fallback_format: ~
-        prefer_extension: true
+        rules:
+            - { path: ^/liip/hello/rest, priorities: [html, json, xml], fallback_format: ~, prefer_extension: false }
+            - { path: ^/liip/jsonp, priorities: [jsonp], fallback_format: jsonp, prefer_extension: true }
+            - { path: ^/liip/customHandler, priorities: [rss], fallback_format: ~, prefer_extension: true }
+            - { path: ^/, priorities: [ html, json, xml ], fallback_format: ~, prefer_extension: true }
     routing_loader:
         default_format: ~
     exception:
@@ -130,6 +123,12 @@ fos_rest:
     serializer:
 #        version: 1.0
 #        groups: [data]
+
+bazinga_hateoas:
+    metadata:
+        cache:                file
+        file_cache:
+            dir:              %kernel.cache_dir%/hateoas
 
 doctrine_phpcr:
     session:
