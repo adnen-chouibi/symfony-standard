@@ -28,3 +28,7 @@ theme:
 monitor:
     resource: "@LiipMonitorBundle/Resources/config/routing.yml"
     prefix:   /liip
+
+fos_facebook_channel:
+    pattern:  /channel.html
+    defaults: { _controller: "FOSFacebookBundle:Facebook:channel" }
