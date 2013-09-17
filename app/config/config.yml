@@ -107,8 +107,10 @@ fos_rest:
     format_listener:
         rules:
             - { path: ^/liip/hello/rest, priorities: [html, json, xml], fallback_format: ~, prefer_extension: false }
-            - { path: ^/liip/jsonp, priorities: [jsonp], fallback_format: jsonp, prefer_extension: true }
-            - { path: ^/liip/customHandler, priorities: [rss], fallback_format: ~, prefer_extension: true }
+            # force rss
+            - { path: ^/liip/customHandler, fallback_format: rss }
+            # force jsonp, return a 406 on a non jsonp request
+            - { path: ^/liip/jsonp, priorities: [jsonp], fallback_format: false, prefer_extension: true }
             - { path: ^/, priorities: [ html, json, xml ], fallback_format: ~, prefer_extension: true }
     routing_loader:
         default_format: ~
