@@ -26,12 +26,14 @@
         "liip/hello-bundle": "dev-master",
         "liip/monitor-bundle": "1.0.*",
         "liip/cache-control-bundle": "1.1.*",
-        "liip/functional-test-bundle": "dev-master",
         "liip/code-bundle": "0.5.*",
         "sensiolabs/security-checker": "v1.1",
-        "wjzijderveld/check-bundles": "dev-master",
+        "wjzijderveld/check-bundles": "1.0.*",
         "egulias/listeners-debug-command-bundle": "dev-master",
-        "willdurand/hateoas-bundle": "@stable"
+        "willdurand/hateoas-bundle": "dev-master"
+    },
+    "require-dev": {
+        "liip/functional-test-bundle": "1.0.*"
     },
     "scripts": {
         "post-install-cmd": [
