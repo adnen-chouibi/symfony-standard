@@ -48,10 +48,10 @@ List of additional bundles and libs:
 
     * FOSUserBundle
     * FOSFacebookBundle (and facebook PHP SDK)
-    * FOSRestBundle (and FOSRest)
+    * FOSRestBundle
+    * FOSHttpCacheBundle
 
     * LiipContainerWrapperBundle
-    * LiipCacheControlBundle
     * LiipHelloBundle
     * LiipHyphenatorBundle (and OrgHeiglHyphenator)
     * LiipThemeBundle
@@ -66,8 +66,6 @@ List of additional bundles and libs:
     * JMSDebuggingBundle
 
     * NelmioApiDocBundle
-
-    * FSCHateoasBundle
 
     * IncenteevParameterHandler
 
