@@ -26,9 +26,9 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\FacebookBundle\FOSFacebookBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new FOS\HttpCacheBundle\FOSHttpCacheBundle(),
 
             new Liip\ContainerWrapperBundle\LiipContainerWrapperBundle(),
-            new Liip\CacheControlBundle\LiipCacheControlBundle(),
             new Liip\HelloBundle\LiipHelloBundle(),
             new Liip\HyphenatorBundle\LiipHyphenatorBundle(),
             new Liip\ThemeBundle\LiipThemeBundle(),
@@ -38,9 +38,6 @@ class AppKernel extends Kernel
             new Liip\UrlAutoConverterBundle\LiipUrlAutoConverterBundle(),
 
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
-            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
-
-//            new SimpleThings\FormSerializerBundle\SimpleThingsFormSerializerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

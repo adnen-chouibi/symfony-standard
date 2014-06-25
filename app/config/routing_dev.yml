@@ -17,37 +17,36 @@ _main:
 _acme_demo:
     resource: "@AcmeDemoBundle/Resources/config/routing.yml"
 
-hello:
+_liip_hello:
     resource: "@LiipHelloBundle/Resources/config/routing.yml"
 
-security:
+_fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
     prefix:   /liip
 
-profile:
+_fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix:   /liip/profile
 
-registration:
+_fos_user_registration:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
     prefix:   /liip/register
 
-_imagine:
-    resource: .
-    type:     imagine
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
 
-NelmioApiDocBundle:
+_nelmio_api_doc:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
     prefix:   /api/doc
 
-theme:
+_liip_theme:
     resource: "@LiipThemeBundle/Resources/config/routing.xml"
     prefix:   /liip/theme
 
-monitor:
-    resource: "@LiipMonitorBundle/Resources/config/routing.yml"
-    prefix:   /liip
+_liip_monitor:
+    resource: "@LiipMonitorBundle/Resources/config/routing.xml"
+    prefix: /monitor/health
 
-fos_facebook_channel:
+_fos_facebook_channel:
     pattern:  /channel.html
     defaults: { _controller: "FOSFacebookBundle:Facebook:channel" }
