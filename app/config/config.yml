@@ -166,7 +166,7 @@ fos_http_cache:
 #        varnish:
 #            base_url: http://symfony-standard.lo
 #            servers: 10.0.0.10:80, 10.0.0.11:80 # comma separated list of ips/ports, or an array of ips/ports
-    flash_message_listener: false
+    flash_message: false
 
 liip_hyphenator:
     language: de_DE
