@@ -17,8 +17,6 @@ security:
                     user:  { password: userpass, roles: [ 'ROLE_USER' ] }
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
-        fos_facebook:
-            id: liip_hello.facebook.user
         fos_userbundle:
             id: fos_user.user_manager
 
@@ -50,16 +48,10 @@ security:
                 check_path: /liip/login-check
                 provider: fos_userbundle
 
-            fos_facebook:
-                login_path: /liip/facebook
-                check_path: /liip/facebook-check
-                default_target_path: /liip/facebook
-                provider: fos_facebook
-
             anonymous: ~
             logout:
-                path: /liip/facebook-logout
-                target: /liip/facebook
+                path: /liip/logout
+                target: /liip/login
 
     access_control:
         - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }

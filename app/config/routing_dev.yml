@@ -46,7 +46,3 @@ _liip_theme:
 _liip_monitor:
     resource: "@LiipMonitorBundle/Resources/config/routing.xml"
     prefix: /monitor/health
-
-_fos_facebook_channel:
-    pattern:  /channel.html
-    defaults: { _controller: "FOSFacebookBundle:Facebook:channel" }

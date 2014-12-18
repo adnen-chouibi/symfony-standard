@@ -24,7 +24,6 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
-            new FOS\FacebookBundle\FOSFacebookBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\HttpCacheBundle\FOSHttpCacheBundle(),
 

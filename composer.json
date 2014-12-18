@@ -22,18 +22,17 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "jackalope/jackalope-doctrine-dbal": "~1.0",
         "liip/hello-bundle": "dev-master",
-        "liip/monitor-bundle": "2.0.*@dev",
+        "liip/monitor-bundle": "~2.0",
         "liip/hyphenator-bundle": "dev-master",
         "liip/container-wrapper-bundle": "dev-master",
-        "friendsofsymfony/http-cache-bundle": "dev-master",
-        "friendsofsymfony/http-cache": "dev-master",
+        "friendsofsymfony/http-cache-bundle": "~1.0",
         "liip/code-bundle": "dev-master",
         "sensiolabs/security-checker": "~1.1",
-        "wjzijderveld/check-bundles": "1.0.*",
+        "wjzijderveld/check-bundles": "~1.0",
         "egulias/listeners-debug-command-bundle": "~1.0"
     },
     "require-dev": {
-        "liip/functional-test-bundle": "1.0.*"
+        "liip/functional-test-bundle": "~1.0"
     },
     "scripts": {
         "post-install-cmd": [

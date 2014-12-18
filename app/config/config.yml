@@ -58,8 +58,17 @@ doctrine:
         path:     "%database_path%"
 
     orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        default_entity_manager: default
+        entity_managers:
+            default:
+                connection: default
+                auto_mapping: true
+                mappings:
+                    AcmeDemoBundle:  ~
+            customer:
+                connection: default
+                mappings:
+                    FOSUserBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -73,14 +82,6 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Liip\HelloBundle\Entity\User
-
-fos_facebook:
-    alias:  facebook
-    app_id: 200207463333974
-    secret: a7d05283b77147f065098358ddb5674c
-    cookie: true
-    permissions: [email, user_birthday, user_location]
-    permissions: [email, user_birthday, user_location]
 
 fos_rest:
     view:
@@ -146,9 +147,6 @@ doctrine_phpcr:
         auto_generate_proxy_classes: %kernel.debug%
         mappings:
             LiipHelloBundle: true
-
-liip_hello:
-    facebook: true
 
 sensio_framework_extra:
     view:    { annotations: false }
