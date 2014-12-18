@@ -47,7 +47,6 @@ List of additional bundles and libs:
     * DoctrineFixturesBundle
 
     * FOSUserBundle
-    * FOSFacebookBundle (and facebook PHP SDK)
     * FOSRestBundle
     * FOSHttpCacheBundle
 
@@ -94,12 +93,6 @@ http://symfony-standard.lo/app_dev.php/liip/phpcr/bar
 
 Using a parameter converter (after calling the previous url):
 http://symfony-standard.lo/app_dev.php/liip/phpcr/convert/bar
-
-Facebook login button:
-http://symfony-standard.lo/app_dev.php/liip/facebook
-
-Check facebook login status:
-http://symfony-standard.lo/app_dev.php/liip/facebook-check
 
 Using the SensioFrameworkExtraBundle together with the RestBundle view layer:
 http://symfony-standard.lo/app_dev.php/liip/extra/foo
