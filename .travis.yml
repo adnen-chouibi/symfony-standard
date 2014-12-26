@@ -9,6 +9,7 @@ php:
   - hhvm
 
 before_script:
+  - composer self-update
   - composer install --no-interaction --prefer-source
   - php app/console doctrine:phpcr:init:dbal -e=test
 
