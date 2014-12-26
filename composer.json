@@ -25,7 +25,7 @@
         "liip/monitor-bundle": "~2.0",
         "friendsofsymfony/http-cache-bundle": "~1.0",
         "liip/code-bundle": "dev-master",
-        "sensiolabs/security-checker": "~1.1",
+        "sensiolabs/security-checker": "~2.0",
         "wjzijderveld/check-bundles": "~1.0",
         "egulias/listeners-debug-command-bundle": "~1.0"
     },

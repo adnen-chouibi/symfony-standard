@@ -14,3 +14,6 @@ before_script:
   - php app/console doctrine:phpcr:init:dbal -e=test
 
 script: phpunit -c app
+
+notifications:
+  slack: liip:3QOs1QKt3aCFxpJvRzpJCbVZ
