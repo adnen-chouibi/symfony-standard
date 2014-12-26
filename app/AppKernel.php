@@ -32,7 +32,6 @@ class AppKernel extends Kernel
             new Liip\HyphenatorBundle\LiipHyphenatorBundle(),
             new Liip\ThemeBundle\LiipThemeBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
-            new Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),
             new Liip\MonitorBundle\LiipMonitorBundle(),
             new Liip\UrlAutoConverterBundle\LiipUrlAutoConverterBundle(),
 

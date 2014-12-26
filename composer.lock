@@ -4,79 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4f741e910a4b344219d4a2f3508cd1a8",
+    "hash": "e04c4054b97db92bff8983cfd2f2b94d",
     "packages": [
         {
-            "name": "dflydev/markdown",
-            "version": "v1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dflydev/dflydev-markdown.git",
-                "reference": "6baed9b50f29c980795b6656d43722aadb126f7e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dflydev/dflydev-markdown/zipball/6baed9b50f29c980795b6656d43722aadb126f7e",
-                "reference": "6baed9b50f29c980795b6656d43722aadb126f7e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "dflydev\\markdown": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Dragonfly Development Inc.",
-                    "email": "info@dflydev.com",
-                    "homepage": "http://dflydev.com"
-                },
-                {
-                    "name": "Beau Simensen",
-                    "email": "beau@dflydev.com",
-                    "homepage": "http://beausimensen.com"
-                },
-                {
-                    "name": "Michel Fortin",
-                    "homepage": "http://michelf.com"
-                },
-                {
-                    "name": "John Gruber",
-                    "homepage": "http://daringfireball.net"
-                }
-            ],
-            "description": "PHP Markdown & Extra",
-            "homepage": "http://github.com/dflydev/dflydev-markdown",
-            "keywords": [
-                "markdown"
-            ],
-            "time": "2013-09-23 12:00:18"
-        },
-        {
             "name": "doctrine/annotations",
-            "version": "v1.2.1",
+            "version": "v1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "6a6bec0670bb6e71a263b08bc1b98ea242928633"
+                "reference": "eeda578cbe24a170331a1cfdf78be723412df7a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/6a6bec0670bb6e71a263b08bc1b98ea242928633",
-                "reference": "6a6bec0670bb6e71a263b08bc1b98ea242928633",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/eeda578cbe24a170331a1cfdf78be723412df7a4",
+                "reference": "eeda578cbe24a170331a1cfdf78be723412df7a4",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +72,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2014-09-25 16:45:30"
+            "time": "2014-12-20 20:49:38"
         },
         {
             "name": "doctrine/cache",
@@ -698,22 +639,30 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "v1.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "54b8333d2a5682afdc690060c1cf384ba9f47f08"
+                "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/54b8333d2a5682afdc690060c1cf384ba9f47f08",
-                "reference": "54b8333d2a5682afdc690060c1cf384ba9f47f08",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/0bcb2e79d8571787f18b7eb036ed3d004908e604",
+                "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Doctrine\\Common\\Inflector\\": "lib/"
@@ -725,17 +674,6 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/",
-                    "role": "Creator"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com",
-                    "homepage": "http://www.instaclick.com"
-                },
-                {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
@@ -744,21 +682,27 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
                     "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
-                    "role": "Developer of wrapped JMSSerializerBundle"
+                    "email": "schmittjoh@gmail.com"
                 }
             ],
             "description": "Common String Manipulations with regard to casing and singular/plural rules.",
             "homepage": "http://www.doctrine-project.org",
             "keywords": [
                 "inflection",
-                "pluarlize",
-                "singuarlize",
+                "pluralize",
+                "singularize",
                 "string"
             ],
-            "time": "2013-01-10 21:49:15"
+            "time": "2014-12-20 21:24:13"
         },
         {
             "name": "doctrine/instantiator",
@@ -1274,47 +1218,50 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.0.0",
+            "version": "1.4.2",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "8e0b02a3ea9cbb76b2043868796659c8f61af29b"
+                "reference": "0649a4c1d8cecd27885b09c1cddddb497a0d3ca3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/8e0b02a3ea9cbb76b2043868796659c8f61af29b",
-                "reference": "8e0b02a3ea9cbb76b2043868796659c8f61af29b",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/0649a4c1d8cecd27885b09c1cddddb497a0d3ca3",
+                "reference": "0649a4c1d8cecd27885b09c1cddddb497a0d3ca3",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "1.0.*",
                 "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.1",
-                "willdurand/negotiation": "1.0.*"
+                "psr/log": "~1.0",
+                "symfony/framework-bundle": "~2.2",
+                "willdurand/jsonp-callback-validator": "~1.0",
+                "willdurand/negotiation": "~1.2"
             },
             "conflict": {
                 "jms/serializer": "<0.12",
                 "jms/serializer-bundle": "<0.11"
             },
             "require-dev": {
-                "jms/serializer-bundle": "0.12.*",
-                "sensio/framework-extra-bundle": "~2.1",
-                "symfony/form": "~2.1",
-                "symfony/security": "~2.1",
-                "symfony/serializer": "~2.1",
-                "symfony/validator": "~2.1",
-                "symfony/yaml": "~2.1"
+                "jms/serializer-bundle": "~0.12",
+                "sensio/framework-extra-bundle": "~2.2",
+                "symfony/form": "~2.2",
+                "symfony/security": "~2.2",
+                "symfony/serializer": "~2.2",
+                "symfony/validator": "~2.2",
+                "symfony/yaml": "~2.2"
             },
             "suggest": {
-                "jms/serializer-bundle": "Add support for advanced serialization capabilities, recommended, requires 0.12.*",
+                "jms/serializer-bundle": "Add support for advanced serialization capabilities, recommended, requires ~0.12",
                 "sensio/framework-extra-bundle": "Add support for route annotations and the view response listener",
-                "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ~2.1"
+                "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ~2.2",
+                "symfony/validator": "Add support for validation capabilities in the ParamFetcher, requires ~2.2"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -1337,8 +1284,7 @@
                 },
                 {
                     "name": "Konstantin Kudryashov",
-                    "email": "ever.zet@gmail.com",
-                    "homepage": "http://everzet.com"
+                    "email": "ever.zet@gmail.com"
                 }
             ],
             "description": "This Bundle provides various tools to rapidly develop RESTful API's with Symfony2",
@@ -1346,7 +1292,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-10-11 14:23:24"
+            "time": "2014-08-15 12:18:54"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1724,23 +1670,23 @@
         },
         {
             "name": "jackalope/jackalope",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jackalope/jackalope.git",
-                "reference": "786df3f8a43ba56402e7ce86ec4c0df282ea48d1"
+                "reference": "87a3fc8ba0a33950e87ad3dbe90ce28bb354d707"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jackalope/jackalope/zipball/786df3f8a43ba56402e7ce86ec4c0df282ea48d1",
-                "reference": "786df3f8a43ba56402e7ce86ec4c0df282ea48d1",
+                "url": "https://api.github.com/repos/jackalope/jackalope/zipball/87a3fc8ba0a33950e87ad3dbe90ce28bb354d707",
+                "reference": "87a3fc8ba0a33950e87ad3dbe90ce28bb354d707",
                 "shasum": ""
             },
             "require": {
                 "ext-xml": "*",
                 "jackalope/jackalope-transport": "*",
-                "php": ">=5.3.2",
-                "phpcr/phpcr": "~2.1.0",
+                "php": ">=5.3.3",
+                "phpcr/phpcr": "~2.1.0,>=2.1.0-beta12",
                 "phpcr/phpcr-utils": ">=1.1.0,<1.3.x-dev"
             },
             "provide": {
@@ -1773,7 +1719,7 @@
             "keywords": [
                 "phpcr"
             ],
-            "time": "2014-12-12 15:11:58"
+            "time": "2014-12-19 10:38:00"
         },
         {
             "name": "jackalope/jackalope-doctrine-dbal",
@@ -2242,7 +2188,7 @@
         },
         {
             "name": "liip/container-wrapper-bundle",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipContainerWrapperBundle.git",
@@ -2291,80 +2237,31 @@
             "time": "2014-08-15 10:38:17"
         },
         {
-            "name": "liip/doctrine-cache-bundle",
-            "version": "1.0.4",
-            "target-dir": "Liip/DoctrineCacheBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/liip/LiipDoctrineCacheBundle.git",
-                "reference": "fd154ded8a51a60219d1fa864eb668e4cc70ec21"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipDoctrineCacheBundle/zipball/fd154ded8a51a60219d1fa864eb668e4cc70ec21",
-                "reference": "fd154ded8a51a60219d1fa864eb668e4cc70ec21",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/common": ">=2.2",
-                "php": ">=5.3.0",
-                "symfony/symfony": ">=2.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Liip\\DoctrineCacheBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Liip AG",
-                    "homepage": "http://www.liip.ch/"
-                }
-            ],
-            "description": "This Bundle provides integration into Symfony2 with the Doctrine Common Cache layer.",
-            "keywords": [
-                "Symfony2",
-                "cache"
-            ],
-            "time": "2014-02-17 02:17:48"
-        },
-        {
             "name": "liip/hello-bundle",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipHelloBundle.git",
-                "reference": "09ef9f4b3d44ea98c08db82307ed6d9a27181800"
+                "reference": "08660b91f9bb7cb7e5f90c91fcc60def9173b5ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipHelloBundle/zipball/09ef9f4b3d44ea98c08db82307ed6d9a27181800",
-                "reference": "09ef9f4b3d44ea98c08db82307ed6d9a27181800",
+                "url": "https://api.github.com/repos/liip/LiipHelloBundle/zipball/08660b91f9bb7cb7e5f90c91fcc60def9173b5ba",
+                "reference": "08660b91f9bb7cb7e5f90c91fcc60def9173b5ba",
                 "shasum": ""
             },
             "require": {
                 "doctrine/phpcr-bundle": "~1.0",
                 "doctrine/phpcr-odm": "~1.0",
-                "friendsofsymfony/rest-bundle": "1.0.*",
-                "friendsofsymfony/user-bundle": "1.3.*",
-                "jms/serializer-bundle": "0.13.*",
-                "liip/container-wrapper-bundle": "1.0.*",
-                "liip/doctrine-cache-bundle": "1.0.*",
-                "liip/hyphenator-bundle": "dev-master",
-                "liip/imagine-bundle": "1.0.*",
-                "liip/theme-bundle": "1.0.*",
-                "liip/url-auto-converter-bundle": "1.0.*",
-                "nelmio/api-doc-bundle": "2.3.*",
+                "friendsofsymfony/rest-bundle": "~1.0",
+                "friendsofsymfony/user-bundle": "~1.3",
+                "jms/serializer-bundle": "~0.13",
+                "liip/container-wrapper-bundle": "~1.0",
+                "liip/hyphenator-bundle": "~1.0",
+                "liip/imagine-bundle": "~1.0",
+                "liip/theme-bundle": "~1.0",
+                "liip/url-auto-converter-bundle": "~1.0",
+                "nelmio/api-doc-bundle": "~2.3",
                 "php": ">=5.3.3",
                 "symfony/framework-bundle": "~2.3"
             },
@@ -2392,26 +2289,26 @@
             "keywords": [
                 "example"
             ],
-            "time": "2014-12-18 08:56:08"
+            "time": "2014-12-26 10:37:36"
         },
         {
             "name": "liip/hyphenator-bundle",
-            "version": "dev-master",
+            "version": "1.0.0",
             "target-dir": "Liip/HyphenatorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipHyphenatorBundle.git",
-                "reference": "8017c0353a1aaf578dab1936df3e0e268d4f4aba"
+                "reference": "c57816922cdeeb383b2a4e846090c92ff8b16d19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipHyphenatorBundle/zipball/8017c0353a1aaf578dab1936df3e0e268d4f4aba",
-                "reference": "8017c0353a1aaf578dab1936df3e0e268d4f4aba",
+                "url": "https://api.github.com/repos/liip/LiipHyphenatorBundle/zipball/c57816922cdeeb383b2a4e846090c92ff8b16d19",
+                "reference": "c57816922cdeeb383b2a4e846090c92ff8b16d19",
                 "shasum": ""
             },
             "require": {
-                "org_heigl/hyphenator": "2.0.*",
-                "php": ">=5.3.2",
+                "org_heigl/hyphenator": "~2.0",
+                "php": ">=5.3.3",
                 "symfony/framework-bundle": "~2.0",
                 "twig/twig": ">=1.0,<2.0-dev"
             },
@@ -2436,21 +2333,21 @@
             "keywords": [
                 "hyphenation"
             ],
-            "time": "2013-07-16 13:08:43"
+            "time": "2014-12-26 10:13:15"
         },
         {
             "name": "liip/imagine-bundle",
-            "version": "1.0.8",
+            "version": "1.2.1",
             "target-dir": "Liip/ImagineBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipImagineBundle.git",
-                "reference": "fe51d50896434d4c1393a5de1504cc174b9049bd"
+                "reference": "5838f67a4fd31a459bb23066f3b6264f78dd083a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/fe51d50896434d4c1393a5de1504cc174b9049bd",
-                "reference": "fe51d50896434d4c1393a5de1504cc174b9049bd",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/5838f67a4fd31a459bb23066f3b6264f78dd083a",
+                "reference": "5838f67a4fd31a459bb23066f3b6264f78dd083a",
                 "shasum": ""
             },
             "require": {
@@ -2510,7 +2407,7 @@
                 "image",
                 "imagine"
             ],
-            "time": "2014-10-22 06:27:33"
+            "time": "2014-12-10 13:01:07"
         },
         {
             "name": "liip/monitor-bundle",
@@ -2586,17 +2483,17 @@
         },
         {
             "name": "liip/theme-bundle",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "target-dir": "Liip/ThemeBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipThemeBundle.git",
-                "reference": "76ceadaae8632fbd1ee881d663ce011126bf2fa0"
+                "reference": "c4b69e047bb49aa5821664b03a60b657a6676c8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/76ceadaae8632fbd1ee881d663ce011126bf2fa0",
-                "reference": "76ceadaae8632fbd1ee881d663ce011126bf2fa0",
+                "url": "https://api.github.com/repos/liip/LiipThemeBundle/zipball/c4b69e047bb49aa5821664b03a60b657a6676c8d",
+                "reference": "c4b69e047bb49aa5821664b03a60b657a6676c8d",
                 "shasum": ""
             },
             "require": {
@@ -2609,7 +2506,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -2636,21 +2533,21 @@
                 "themes",
                 "theming"
             ],
-            "time": "2014-04-15 16:20:40"
+            "time": "2014-08-29 15:32:53"
         },
         {
             "name": "liip/url-auto-converter-bundle",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "target-dir": "Liip/UrlAutoConverterBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipUrlAutoConverterBundle.git",
-                "reference": "29a2d1367f9a410fec4dbf6d81714b57480e53de"
+                "reference": "0b86c255fb5e4f08d24f108f2c06110018d061db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipUrlAutoConverterBundle/zipball/29a2d1367f9a410fec4dbf6d81714b57480e53de",
-                "reference": "29a2d1367f9a410fec4dbf6d81714b57480e53de",
+                "url": "https://api.github.com/repos/liip/LiipUrlAutoConverterBundle/zipball/0b86c255fb5e4f08d24f108f2c06110018d061db",
+                "reference": "0b86c255fb5e4f08d24f108f2c06110018d061db",
                 "shasum": ""
             },
             "require": {
@@ -2661,7 +2558,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -2688,7 +2585,58 @@
             "keywords": [
                 "url"
             ],
-            "time": "2014-05-07 08:29:31"
+            "time": "2014-07-30 07:37:14"
+        },
+        {
+            "name": "michelf/php-markdown",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michelf/php-markdown.git",
+                "reference": "de9a19c7bf352d41cc99ed86c3c0ef17e87394b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/de9a19c7bf352d41cc99ed86c3c0ef17e87394b6",
+                "reference": "de9a19c7bf352d41cc99ed86c3c0ef17e87394b6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-lib": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Michelf": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Michel Fortin",
+                    "email": "michel.fortin@michelf.ca",
+                    "homepage": "http://michelf.ca/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "John Gruber",
+                    "homepage": "http://daringfireball.net/"
+                }
+            ],
+            "description": "PHP Markdown",
+            "homepage": "http://michelf.ca/projects/php-markdown/",
+            "keywords": [
+                "markdown"
+            ],
+            "time": "2014-05-05 02:43:50"
         },
         {
             "name": "monolog/monolog",
@@ -2764,21 +2712,21 @@
         },
         {
             "name": "nelmio/api-doc-bundle",
-            "version": "2.3.2",
+            "version": "2.7.0",
             "target-dir": "Nelmio/ApiDocBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/NelmioApiDocBundle.git",
-                "reference": "d7fd92937907b7664567e57f6a3d9a20ed7ae4ec"
+                "reference": "3fdb2d4a819d1f71bff0c45880af705a8b124955"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/d7fd92937907b7664567e57f6a3d9a20ed7ae4ec",
-                "reference": "d7fd92937907b7664567e57f6a3d9a20ed7ae4ec",
+                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/3fdb2d4a819d1f71bff0c45880af705a8b124955",
+                "reference": "3fdb2d4a819d1f71bff0c45880af705a8b124955",
                 "shasum": ""
             },
             "require": {
-                "dflydev/markdown": "1.0.*",
+                "michelf/php-markdown": "~1.4",
                 "symfony/console": "~2.1",
                 "symfony/framework-bundle": "~2.1",
                 "symfony/twig-bundle": "~2.1"
@@ -2788,7 +2736,7 @@
                 "jms/serializer-bundle": "<0.11"
             },
             "require-dev": {
-                "friendsofsymfony/rest-bundle": "0.12.*@dev",
+                "friendsofsymfony/rest-bundle": "~1.0",
                 "jms/serializer-bundle": ">=0.11",
                 "sensio/framework-extra-bundle": "~2.1",
                 "symfony/browser-kit": "~2.1",
@@ -2806,7 +2754,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3.x-dev"
+                    "dev-master": "2.7.x-dev"
                 }
             },
             "autoload": {
@@ -2835,7 +2783,7 @@
                 "documentation",
                 "rest"
             ],
-            "time": "2013-11-14 09:33:57"
+            "time": "2014-07-30 09:11:08"
         },
         {
             "name": "org_heigl/hyphenator",
@@ -3724,16 +3672,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.16.2",
+            "version": "v1.16.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "42f758d9fe2146d1f0470604fc05ee43580873fc"
+                "reference": "6dc11a1e8ecfc30e2c68aaeb218148409d8e68af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/42f758d9fe2146d1f0470604fc05ee43580873fc",
-                "reference": "42f758d9fe2146d1f0470604fc05ee43580873fc",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/6dc11a1e8ecfc30e2c68aaeb218148409d8e68af",
+                "reference": "6dc11a1e8ecfc30e2c68aaeb218148409d8e68af",
                 "shasum": ""
             },
             "require": {
@@ -3768,7 +3716,7 @@
                 },
                 {
                     "name": "Twig Team",
-                    "homepage": "https://github.com/fabpot/Twig/graphs/contributors",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
                     "role": "Contributors"
                 }
             ],
@@ -3777,20 +3725,60 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-10-17 12:53:44"
+            "time": "2014-12-25 19:58:19"
         },
         {
-            "name": "willdurand/negotiation",
-            "version": "1.0.5",
+            "name": "willdurand/jsonp-callback-validator",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/willdurand/Negotiation.git",
-                "reference": "94733e96952a1f57db600582a8221807bb6f100a"
+                "url": "https://github.com/willdurand/JsonpCallbackValidator.git",
+                "reference": "1a7d388bb521959e612ef50c5c7b1691b097e909"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/94733e96952a1f57db600582a8221807bb6f100a",
-                "reference": "94733e96952a1f57db600582a8221807bb6f100a",
+                "url": "https://api.github.com/repos/willdurand/JsonpCallbackValidator/zipball/1a7d388bb521959e612ef50c5c7b1691b097e909",
+                "reference": "1a7d388bb521959e612ef50c5c7b1691b097e909",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsonpCallbackValidator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Durand",
+                    "email": "william.durand1@gmail.com",
+                    "homepage": "http://www.willdurand.fr"
+                }
+            ],
+            "description": "JSONP callback validator.",
+            "time": "2014-01-20 22:35:06"
+        },
+        {
+            "name": "willdurand/negotiation",
+            "version": "1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/willdurand/Negotiation.git",
+                "reference": "d7fa4ce4a0436915b9ba9f7cb5ff37719f0a834c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/d7fa4ce4a0436915b9ba9f7cb5ff37719f0a834c",
+                "reference": "d7fa4ce4a0436915b9ba9f7cb5ff37719f0a834c",
                 "shasum": ""
             },
             "require": {
@@ -3799,7 +3787,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -3814,8 +3802,7 @@
             "authors": [
                 {
                     "name": "William Durand",
-                    "email": "william.durand1@gmail.com",
-                    "homepage": "http://www.willdurand.fr"
+                    "email": "william.durand1@gmail.com"
                 }
             ],
             "description": "Content Negotiation tools for PHP provided as a standalone library.",
@@ -3827,7 +3814,7 @@
                 "header",
                 "negotiation"
             ],
-            "time": "2014-05-16 12:31:56"
+            "time": "2014-10-02 07:26:00"
         },
         {
             "name": "wjzijderveld/check-bundles",
@@ -3944,17 +3931,17 @@
     "packages-dev": [
         {
             "name": "liip/functional-test-bundle",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "target-dir": "Liip/FunctionalTestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "e665bb4fca6ca449e225db569db671348a2579e4"
+                "reference": "ae44d2db9e8831adc3dae3b79c3e91e4628b445b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/e665bb4fca6ca449e225db569db671348a2579e4",
-                "reference": "e665bb4fca6ca449e225db569db671348a2579e4",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/ae44d2db9e8831adc3dae3b79c3e91e4628b445b",
+                "reference": "ae44d2db9e8831adc3dae3b79c3e91e4628b445b",
                 "shasum": ""
             },
             "require": {
@@ -3997,7 +3984,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2014-06-27 14:00:35"
+            "time": "2014-12-23 22:52:03"
         }
     ],
     "aliases": [],
@@ -4005,8 +3992,6 @@
     "stability-flags": {
         "doctrine/doctrine-fixtures-bundle": 20,
         "liip/hello-bundle": 20,
-        "liip/hyphenator-bundle": 20,
-        "liip/container-wrapper-bundle": 20,
         "liip/code-bundle": 20
     },
     "prefer-stable": false,

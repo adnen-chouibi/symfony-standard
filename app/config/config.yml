@@ -191,12 +191,6 @@ liip_imagine:
                 thumbnail: { size: [120, 90], mode: outbound }
                 relative_resize: { heighten: 78 }
 
-liip_doctrine_cache:
-    namespaces:
-        foo:
-            namespace: ding
-            type: apc
-
 liip_monitor:
     enable_controller: true
     checks:

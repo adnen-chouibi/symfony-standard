@@ -23,8 +23,6 @@
         "jackalope/jackalope-doctrine-dbal": "~1.0",
         "liip/hello-bundle": "dev-master",
         "liip/monitor-bundle": "~2.0",
-        "liip/hyphenator-bundle": "dev-master",
-        "liip/container-wrapper-bundle": "dev-master",
         "friendsofsymfony/http-cache-bundle": "~1.0",
         "liip/code-bundle": "dev-master",
         "sensiolabs/security-checker": "~1.1",

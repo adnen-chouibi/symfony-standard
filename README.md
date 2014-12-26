@@ -55,7 +55,6 @@ List of additional bundles and libs:
     * LiipHyphenatorBundle (and OrgHeiglHyphenator)
     * LiipThemeBundle
     * LiipImagineBundle (and imagine lib)
-    * LiipDoctrineCacheBundle
     * LiipFunctionalTestBundle
     * LiipMonitorBundle
     * LiipCodeBundle
@@ -125,9 +124,6 @@ http://symfony-standard.lo/app_dev.php/liip/customHandler.rss
 
 Using the LiipImagineBundle
 http://symfony-standard.lo/app_dev.php/liip/imagine
-
-Using the LiipDoctrineCacheBundle with apc
-http://symfony-standard.lo/app_dev.php/liip/apc
 
 Using the NelmioApiDocBundle
 http://symfony-standard.lo/app_dev.php/api/doc/
