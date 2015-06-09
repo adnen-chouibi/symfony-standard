@@ -58,6 +58,8 @@ List of additional bundles and libs:
     * LiipFunctionalTestBundle
     * LiipMonitorBundle
     * LiipCodeBundle
+    * LiipSearchBundle
+    * LiipTranslationBundle
 
     * JMSAopBundle (and cg-library)
     * JMSSerializerBundle

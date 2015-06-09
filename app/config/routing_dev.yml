@@ -46,3 +46,11 @@ _liip_theme:
 _liip_monitor:
     resource: "@LiipMonitorBundle/Resources/config/routing.xml"
     prefix: /monitor/health
+
+_liip_translation:
+    resource: "@LiipTranslationBundle/Resources/config/routing.yml"
+    prefix: /translation
+
+_liip_search:
+    resource: "@LiipSearchBundle/Resources/config/routing.yml"
+    prefix: /search

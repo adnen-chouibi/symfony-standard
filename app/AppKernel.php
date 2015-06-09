@@ -34,6 +34,8 @@ class AppKernel extends Kernel
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Liip\MonitorBundle\LiipMonitorBundle(),
             new Liip\UrlAutoConverterBundle\LiipUrlAutoConverterBundle(),
+            new Liip\TranslationBundle\LiipTranslationBundle(),
+            new Liip\SearchBundle\LiipSearchBundle(),
 
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
         );

@@ -19,7 +19,7 @@
         "sensio/framework-extra-bundle": "~2.0",
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
-        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "~2.0",
         "jackalope/jackalope-doctrine-dbal": "~1.0",
         "liip/hello-bundle": "dev-master",
         "liip/monitor-bundle": "~2.0",
@@ -27,10 +27,13 @@
         "liip/code-bundle": "dev-master",
         "sensiolabs/security-checker": "~2.0",
         "wjzijderveld/check-bundles": "~1.0",
-        "egulias/listeners-debug-command-bundle": "~1.0"
+        "egulias/listeners-debug-command-bundle": "~1.0",
+        "liip/translation-bundle": "0.0.*",
+        "liip/search-bundle": "~1.0"
     },
     "require-dev": {
-        "liip/functional-test-bundle": "~1.0"
+        "liip/functional-test-bundle": "~1.0",
+        "symfony/phpunit-bridge": "~2.7"
     },
     "scripts": {
         "post-install-cmd": [
