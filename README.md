@@ -61,9 +61,7 @@ List of additional bundles and libs:
     * LiipSearchBundle
     * LiipTranslationBundle
 
-    * JMSAopBundle (and cg-library)
     * JMSSerializerBundle
-    * JMSDebuggingBundle
 
     * NelmioApiDocBundle
 

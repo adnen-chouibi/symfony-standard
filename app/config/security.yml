@@ -12,17 +12,14 @@ security:
 
     providers:
         in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+            memory: ~
 
         fos_userbundle:
-            id: fos_user.user_manager
+            id: fos_user.user_provider.username
 
     firewalls:
         dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
 
         login:
