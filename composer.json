@@ -41,26 +41,26 @@
             "SymfonyStandard\\Composer::hookRootPackageInstall"
         ],
         "post-install-cmd": [
-            "Liip\\MonitorBundle\\Composer\\ScriptHandler::checkHealth",
-            "WillemJan\\CheckBundles\\Composer\\CheckBundles::postPackageUpdate",
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
+            "Liip\\MonitorBundle\\Composer\\ScriptHandler::checkHealth",
+            "WillemJan\\CheckBundles\\Composer\\CheckBundles::postPackageUpdate"
         ],
         "post-update-cmd": [
-            "Liip\\MonitorBundle\\Composer\\ScriptHandler::checkHealth",
-            "WillemJan\\CheckBundles\\Composer\\CheckBundles::postPackageUpdate",
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
+            "Liip\\MonitorBundle\\Composer\\ScriptHandler::checkHealth",
+            "WillemJan\\CheckBundles\\Composer\\CheckBundles::postPackageUpdate"
         ]
     },
     "config": {
@@ -73,7 +73,7 @@
         "incenteev-parameters": {
           "file": "app/config/parameters.yml"
         },
-        "checkbundles-ignore": ["JMS\\AopBundle\\JMSAopBundle", "JMS\\DiExtraBundle\\JMSDiExtraBundle", "Liip\\FunctionalTestBundle\\LiipFunctionalTestBundle"],
+        "checkbundles-ignore": ["Liip\\FunctionalTestBundle\\LiipFunctionalTestBundle"],
         "branch-alias": {
           "dev-master": "2.7-dev"
         }
