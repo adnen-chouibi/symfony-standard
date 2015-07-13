@@ -14,3 +14,11 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+liip_functional_test:
+    cache_sqlite_db: true
+    authentication:
+        username: "a valid username"
+        password: "the password of that user"
+    query:
+        max_query_count: 50
