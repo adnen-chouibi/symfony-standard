@@ -178,7 +178,7 @@ fos_http_cache:
     flash_message: false
 
 liip_hyphenator:
-    language: de_DE
+    default_locale: de_DE
     hyphen: '&shy;'
 
 liip_theme:
