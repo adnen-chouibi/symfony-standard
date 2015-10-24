@@ -4,7 +4,7 @@
     "license": "MIT",
     "type": "project",
     "autoload": {
-        "psr-4": { "": "src/", "SymfonyStandard\\": "app/SymfonyStandard/" }
+        "psr-4": { "": "src/" }
     },
     "require": {
         "jackalope/jackalope-doctrine-dbal": "~1.0",
@@ -20,16 +20,15 @@
         "wjzijderveld/check-bundles": "~1.0",
         "egulias/listeners-debug-command-bundle": "~1.0",
         "friendsofsymfony/http-cache-bundle": "~1.0",
-        "php": ">=5.3.3",
+        "php": ">=5.3.9",
         "symfony/symfony": "2.7.*",
-        "doctrine/orm": "~2.2,>=2.2.3,<2.5",
-        "doctrine/dbal": "<2.5",
+        "doctrine/orm": "^2.4.8",
         "doctrine/doctrine-bundle": "~1.4",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
-        "sensio/distribution-bundle": "~3.0,>=3.0.12",
-        "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
+        "sensio/distribution-bundle": "~4.0",
+        "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {
@@ -38,16 +37,12 @@
         "sensio/generator-bundle": "~2.3"
     },
     "scripts": {
-        "post-root-package-install": [
-            "SymfonyStandard\\Composer::hookRootPackageInstall"
-        ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
             "Liip\\MonitorBundle\\Composer\\ScriptHandler::checkHealth",
             "WillemJan\\CheckBundles\\Composer\\CheckBundles::postPackageUpdate"
@@ -58,7 +53,6 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
             "Liip\\MonitorBundle\\Composer\\ScriptHandler::checkHealth",
             "WillemJan\\CheckBundles\\Composer\\CheckBundles::postPackageUpdate"

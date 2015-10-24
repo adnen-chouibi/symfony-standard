@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8e4ae9adb34cb00eb02f02ad824934ee",
-    "content-hash": "c854344a5a0b5e9e6b07a105c5148169",
+    "hash": "e9c4cbbfcfc235ea972bea0a0f125c69",
+    "content-hash": "889417395373a966c9ff6668aaaaf92a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -343,30 +343,38 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.4.4",
+            "version": "v2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "a370e5b95e509a7809d11f3d280acfc9310d464b"
+                "reference": "01dbcbc5cd0a913d751418e635434a18a2f2a75c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/a370e5b95e509a7809d11f3d280acfc9310d464b",
-                "reference": "a370e5b95e509a7809d11f3d280acfc9310d464b",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/01dbcbc5cd0a913d751418e635434a18a2f2a75c",
+                "reference": "01dbcbc5cd0a913d751418e635434a18a2f2a75c",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "~2.4",
+                "doctrine/common": ">=2.4,<2.6-dev",
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*",
-                "symfony/console": "~2.0"
+                "phpunit/phpunit": "4.*",
+                "symfony/console": "2.*"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
             },
+            "bin": [
+                "bin/doctrine-dbal"
+            ],
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Doctrine\\DBAL\\": "lib/"
@@ -402,7 +410,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2015-01-12 21:57:01"
+            "time": "2015-09-16 16:29:33"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -800,26 +808,30 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.4.8",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "5aedac1e5c5caaeac14798822c70325dc242d467"
+                "reference": "e6a83bedbe67579cb0bfb688e982e617943a2945"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/5aedac1e5c5caaeac14798822c70325dc242d467",
-                "reference": "5aedac1e5c5caaeac14798822c70325dc242d467",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e6a83bedbe67579cb0bfb688e982e617943a2945",
+                "reference": "e6a83bedbe67579cb0bfb688e982e617943a2945",
                 "shasum": ""
             },
             "require": {
-                "doctrine/collections": "~1.1",
-                "doctrine/dbal": "~2.4",
+                "doctrine/cache": "~1.4",
+                "doctrine/collections": "~1.2",
+                "doctrine/common": ">=2.5-dev,<2.6-dev",
+                "doctrine/dbal": ">=2.5-dev,<2.6-dev",
+                "doctrine/instantiator": "~1.0.1",
                 "ext-pdo": "*",
-                "php": ">=5.3.2",
-                "symfony/console": "~2.0"
+                "php": ">=5.4",
+                "symfony/console": "~2.5"
             },
             "require-dev": {
+                "phpunit/phpunit": "~4.0",
                 "satooshi/php-coveralls": "dev-master",
                 "symfony/yaml": "~2.1"
             },
@@ -833,7 +845,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4.x-dev"
+                    "dev-master": "2.6.x-dev"
                 }
             },
             "autoload": {
@@ -869,7 +881,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2015-08-31 13:19:01"
+            "time": "2015-08-31 12:59:39"
         },
         {
             "name": "doctrine/phpcr-bundle",
@@ -1572,16 +1584,16 @@
         },
         {
             "name": "jackalope/jackalope",
-            "version": "1.1.7",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jackalope/jackalope.git",
-                "reference": "c282200645c913dad1915f38c0e4258f52c5101b"
+                "reference": "4d3568c42af4132be31f4341c76ad9a1d17d4953"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jackalope/jackalope/zipball/c282200645c913dad1915f38c0e4258f52c5101b",
-                "reference": "c282200645c913dad1915f38c0e4258f52c5101b",
+                "url": "https://api.github.com/repos/jackalope/jackalope/zipball/4d3568c42af4132be31f4341c76ad9a1d17d4953",
+                "reference": "4d3568c42af4132be31f4341c76ad9a1d17d4953",
                 "shasum": ""
             },
             "require": {
@@ -1589,7 +1601,7 @@
                 "jackalope/jackalope-transport": "*",
                 "php": ">=5.3.3",
                 "phpcr/phpcr": "~2.1.0,>=2.1.0-beta12",
-                "phpcr/phpcr-utils": ">=1.1.0,<1.3.x-dev"
+                "phpcr/phpcr-utils": "~1.2,>=1.2.6"
             },
             "provide": {
                 "phpcr/phpcr-implementation": "2.1.0"
@@ -1597,7 +1609,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -1621,35 +1633,36 @@
             "keywords": [
                 "phpcr"
             ],
-            "time": "2015-02-13 14:23:18"
+            "time": "2015-10-18 13:33:54"
         },
         {
             "name": "jackalope/jackalope-doctrine-dbal",
-            "version": "1.1.5",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jackalope/jackalope-doctrine-dbal.git",
-                "reference": "90e3c706762fa2a1623b5d837d36cb1dad843a50"
+                "reference": "5bea74335a1c6e2ad82b258ee6c78c1896d42ec9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jackalope/jackalope-doctrine-dbal/zipball/90e3c706762fa2a1623b5d837d36cb1dad843a50",
-                "reference": "90e3c706762fa2a1623b5d837d36cb1dad843a50",
+                "url": "https://api.github.com/repos/jackalope/jackalope-doctrine-dbal/zipball/5bea74335a1c6e2ad82b258ee6c78c1896d42ec9",
+                "reference": "5bea74335a1c6e2ad82b258ee6c78c1896d42ec9",
                 "shasum": ""
             },
             "require": {
-                "doctrine/dbal": ">=2.4.0,<2.6",
-                "jackalope/jackalope": "~1.1.1",
+                "doctrine/dbal": ">=2.4.5,<3.0.x-dev",
+                "jackalope/jackalope": "~1.2.4",
                 "php": ">=5.3.3",
-                "phpcr/phpcr": "~2.1.0",
-                "phpcr/phpcr-utils": ">=1.1.0,<1.3.x-dev"
+                "phpcr/phpcr": "~2.1.2",
+                "phpcr/phpcr-utils": "^1.2.8"
             },
             "provide": {
                 "jackalope/jackalope-transport": "1.1.0"
             },
             "require-dev": {
-                "phpcr/phpcr-api-tests": "2.1.1.1",
+                "phpcr/phpcr-api-tests": "2.1.10",
                 "phpunit/dbunit": "~1.3",
+                "phpunit/phpunit": "4.7.*",
                 "psr/log": "~1.0"
             },
             "bin": [
@@ -1658,7 +1671,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -1684,7 +1697,7 @@
                 "phpcr",
                 "transport implementation"
             ],
-            "time": "2015-05-02 18:28:31"
+            "time": "2015-10-20 14:39:49"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -2327,17 +2340,17 @@
         },
         {
             "name": "liip/monitor-bundle",
-            "version": "2.1.2",
+            "version": "2.1.3",
             "target-dir": "Liip/MonitorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipMonitorBundle.git",
-                "reference": "0f14deeecb6b2930d055d5b379f3711acf3aec6f"
+                "reference": "c41c90b021d3e8030344ed957fcdf7536d1799ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipMonitorBundle/zipball/0f14deeecb6b2930d055d5b379f3711acf3aec6f",
-                "reference": "0f14deeecb6b2930d055d5b379f3711acf3aec6f",
+                "url": "https://api.github.com/repos/liip/LiipMonitorBundle/zipball/c41c90b021d3e8030344ed957fcdf7536d1799ff",
+                "reference": "c41c90b021d3e8030344ed957fcdf7536d1799ff",
                 "shasum": ""
             },
             "require": {
@@ -2396,7 +2409,7 @@
                 "monitor",
                 "monitoring"
             ],
-            "time": "2015-09-13 19:13:55"
+            "time": "2015-10-24 15:31:15"
         },
         {
             "name": "liip/search-bundle",
@@ -3139,21 +3152,21 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.30",
+            "version": "v4.0.0",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "f1758b30096202aeede61f79a1dffd69da091517"
+                "reference": "97929c0a642977acead3d911b2c5c1a944739d40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/f1758b30096202aeede61f79a1dffd69da091517",
-                "reference": "f1758b30096202aeede61f79a1dffd69da091517",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/97929c0a642977acead3d911b2c5c1a944739d40",
+                "reference": "97929c0a642977acead3d911b2c5c1a944739d40",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
+                "php": ">=5.3.9",
                 "sensiolabs/security-checker": "~2.0",
                 "symfony/class-loader": "~2.2",
                 "symfony/framework-bundle": "~2.3",
@@ -3172,7 +3185,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "4.0.x-dev"
                 }
             },
             "autoload": {
@@ -3195,7 +3208,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-06-05 22:32:22"
+            "time": "2015-06-11 20:55:01"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -4094,7 +4107,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.3.3"
+        "php": ">=5.3.9"
     },
     "platform-dev": []
 }
