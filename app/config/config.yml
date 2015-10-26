@@ -222,5 +222,6 @@ liip_translation:
           languages: ['en', 'fr']
 
 liip_search:
-    google:
-        search_key: %google_search_api_key%
+    clients:
+        google_cse:
+            cse_id: "%google_search_api_key%"

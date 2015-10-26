@@ -52,5 +52,5 @@ _liip_translation:
     prefix: /translation
 
 _liip_search:
-    resource: "@LiipSearchBundle/Resources/config/routing.yml"
+    resource: "@LiipSearchBundle/Resources/config/routing.xml"
     prefix: /search
