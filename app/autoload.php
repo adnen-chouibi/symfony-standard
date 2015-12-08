@@ -9,4 +9,6 @@ if (!$loader = include __DIR__.'/../vendor/autoload.php') {
         'php composer.phar install'.$nl);
 }
 
+\Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
+
 return $loader;

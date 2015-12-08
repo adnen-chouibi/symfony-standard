@@ -10,5 +10,4 @@
 /bin/
 /composer.phar
 /web/media/
-app/bootstrap.php.cache
 app/data.db3
